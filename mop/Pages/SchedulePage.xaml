@@ -5,11 +5,45 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="SchedulePage">
 
-    <Grid>
-        <TextBlock FontSize="50">Schedule</TextBlock>
-        <Button Width="30" Height="20" Click="Button_Click"/>
+    <Grid Background="White">
+
+        <Button Content="← назад"
+                    FontSize="34"
+                    FontWeight="Bold"
+                    Width="200"
+                    Background="Transparent"
+                    BorderThickness="0" 
+                    x:Name="BackBtn" Margin="95,43,1625,957" Click="BackBtn_Click">
+            <Button.Foreground>
+                <LinearGradientBrush>
+                    <GradientStop Color="#C0D5B3" Offset="0"/>
+                    <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                    <GradientStop Color="#A3AEE6" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+        </Button>
+
+        <StackPanel Width="20">
+
+        </StackPanel>
+        <Image Source="/Images/Vector.png"
+               Width="800"
+                   Margin="1269,0,-149,306"/>
+        <Image Source="/Images/Vector.png"
+               Width="800"
+                   Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
     </Grid>
 </Page>
