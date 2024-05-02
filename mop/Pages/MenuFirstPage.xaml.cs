@@ -55,5 +55,13 @@ namespace mop.Pages
         {
             NavigationService.Navigate(new SchedulePage());
         }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Вы уверены, что хотите выйти из профиля???", "Подтверждение выхода",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+                NavigationService.Navigate(new AuthorizationPage());
+        }
     }
 }
