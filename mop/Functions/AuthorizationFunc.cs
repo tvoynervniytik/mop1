@@ -16,13 +16,13 @@ namespace mop.Functions
 
         public static void Authorization(string login, string password)
         {
-            if (login == null || password == null) 
+            if (login == ""|| password == "") 
             { 
-                if (login == null) 
+                if (login == "") 
                 {
                     MessageBox.Show("Введите логин!", "login error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                if (password == null) 
+                if (password == "") 
                 {
                     MessageBox.Show("Введите пароль!", "password error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
