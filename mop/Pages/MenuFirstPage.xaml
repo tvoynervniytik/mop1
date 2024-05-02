@@ -5,10 +5,99 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="MenuFirstPage">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+            <TextBlock Text="меню" 
+                       FontSize="70" 
+                       Margin="0 0 0 15"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+           
+            <Border CornerRadius="26"
+                    Margin="0 10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Content="оформление"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="60"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="OrderBtn" Click="OrderBtn_Click"/>
+            </Border>
+
+            <Border CornerRadius="26"
+                    Margin="0 10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Content="информация"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="60"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="InfBtn" Click="InfBtn_Click"/>
+            </Border>
+
+            <Border CornerRadius="26"
+                    Margin="0 10">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Content="расписание"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="60"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="ScheduleBtn" Click="ScheduleBtn_Click"/>
+            </Border>
+
+        </StackPanel>
+        <Image Source="/Images/Vector.png"
+               Width="800"
+                   Margin="1269,0,-149,306"/>
+        <Image Source="/Images/Vector.png"
+               Width="800"
+                   Margin="-137,308,1257,-2" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
     </Grid>
 </Page>

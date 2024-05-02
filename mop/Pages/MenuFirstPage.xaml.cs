@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mop.Functions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,36 @@ namespace mop.Pages
         public MenuFirstPage()
         {
             InitializeComponent();
+            if (AuthorizationFunc.loggedUser.PostID == 2)
+            {
+                OrderBtn.Content = "оформление заказа";
+            }
+            if (AuthorizationFunc.loggedUser.PostID == 3)
+            {
+                OrderBtn.Content = "формирование бригады";
+            }
+        }
+
+        private void OrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (AuthorizationFunc.loggedUser.PostID == 2)
+            {
+                NavigationService.Navigate(new OrdersPage());
+            }
+            if (AuthorizationFunc.loggedUser.PostID == 3)
+            {
+                NavigationService.Navigate(new AddBrigadesPage());
+            }
+        }
+
+        private void InfBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuSecondPage());
+        }
+
+        private void ScheduleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SchedulePage());
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using mop.Functions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,24 +16,18 @@ using System.Windows.Shapes;
 namespace mop.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorizationPage.xaml
+    /// Логика взаимодействия для OrdersPage.xaml
     /// </summary>
-    public partial class AuthorizationPage : Page
+    public partial class OrdersPage : Page
     {
-        public AuthorizationPage()
+        public OrdersPage()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string login;
-            string password;
-            login = loginTb.Text.Trim();
-            password = passwordTb.Password.Trim();
-
-            AuthorizationFunc.Authorization(login, password);
-            NavigationService.Navigate(new MenuFirstPage());
+            NavigationService.GoBack();
         }
     }
 }
