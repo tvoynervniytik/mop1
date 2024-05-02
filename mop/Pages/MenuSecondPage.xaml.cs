@@ -47,5 +47,30 @@ namespace mop.Pages
         {
             NavigationService.Navigate(new MenuFirstPage());
         }
+
+        private void brigadeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new BrigadesPage());
+        }
+
+        private void emplBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeesPage());
+        }
+
+        private void clientsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ClientsPage());
+        }
+
+        private void servicessBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ServicesPage());
+        }
+
+        private void addressesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddressesPage());
+        }
     }
 }
