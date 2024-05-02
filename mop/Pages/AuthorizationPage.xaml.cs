@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mop.Functions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,8 @@ namespace mop.Pages
             string password;
             login = loginTb.Text.Trim();
             password = passwordTb.Password.Trim();
+
+            AuthorizationFunc.Authorization(login, password);
         }
     }
 }

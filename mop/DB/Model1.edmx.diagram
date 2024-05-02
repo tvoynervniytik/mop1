@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83b647efea6846d99637518fcd593c5f" Name="Diagram1">
+        <EntityTypeShape EntityType="mopModel.Address" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Brigades" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Clients" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Education" Width="1.5" PointX="1.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Employees" Width="1.5" PointX="1.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Orders" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Posts" Width="1.5" PointX="1.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.Services" Width="1.5" PointX="3.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="mopModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="mopModel.FK_Address_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="mopModel.FK_Brigades_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="mopModel.FK_Orders_Brigades" ManuallyRouted="false" />
+        <AssociationConnector Association="mopModel.FK_Orders_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="mopModel.FK_Employees_Education" ManuallyRouted="false" />
+        <AssociationConnector Association="mopModel.FK_Employees_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="mopModel.FK_Orders_Services" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -8,6 +8,6 @@ namespace mop.DB
 {
     internal class DBConnection
     {
-        //public static logUser;
+        public static mopEntities mop = new mopEntities();
     }
 }
