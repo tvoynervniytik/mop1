@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,22 @@ namespace mop.Pages
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeAddWindow employeeAddWindow = new EmployeeAddWindow();
+            employeeAddWindow.Show();
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
