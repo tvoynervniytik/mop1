@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mop.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace mop.Pages
     /// </summary>
     public partial class EmployeesPage : Page
     {
+        public static List<Employees> employees {  get; set; }
         public EmployeesPage()
         {
             InitializeComponent();
+            employees = new List<Employees>(DBConnection.mop.Employees.ToList());
+            this.DataContext = this;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

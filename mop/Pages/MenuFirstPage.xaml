@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="MenuFirstPage">
 
     <Grid Background="White">
@@ -16,7 +16,7 @@
                     Width="200"
                     Background="Transparent"
                     BorderThickness="0" 
-                    x:Name="BackBtn" Click="BackBtn_Click" Margin="95,43,1625,957">
+                    x:Name="BackBtn" Click="BackBtn_Click" Margin="65,10,1015,602">
             <Button.Foreground>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -100,7 +100,7 @@
             </Border>
 
         </StackPanel>
-        <Image Source="/Images/Vector.png"
+        <!--<Image Source="/Images/Vector.png"
                Width="800"
                    Margin="1269,0,-149,306"/>
         <Image Source="/Images/Vector.png"
@@ -114,7 +114,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Image.RenderTransform>
-        </Image>
+        </Image>-->
 
     </Grid>
 </Page>

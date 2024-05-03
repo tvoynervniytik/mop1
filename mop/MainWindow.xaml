@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:mop"
         mc:Ignorable="d"
         Icon="/Images/logo.png"
-        Title="mop" Height="1080" Width="1920">
+        Title="mop" Height="720" Width="1280">
     <Grid>
         <Frame x:Name="navFr" NavigationUIVisibility="Hidden"/>
     </Grid>

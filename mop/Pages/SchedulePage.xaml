@@ -16,7 +16,7 @@
                     Width="200"
                     Background="Transparent"
                     BorderThickness="0" 
-                    x:Name="BackBtn" Margin="95,43,1625,957" Click="BackBtn_Click">
+                    x:Name="BackBtn" Margin="65,10,1015,602" Click="BackBtn_Click">
             <Button.Foreground>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
