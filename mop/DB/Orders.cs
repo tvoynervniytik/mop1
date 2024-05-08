@@ -20,6 +20,7 @@ namespace mop.DB
         public Nullable<int> ServicesID { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> Square { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
         public virtual Brigades Brigades { get; set; }
         public virtual Clients Clients { get; set; }
