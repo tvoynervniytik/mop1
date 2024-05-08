@@ -38,20 +38,5 @@ namespace mop.Pages
         {
             NavigationService.Navigate(new MenuFirstPage());
         }
-
-        private void addBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void delBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void editBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
