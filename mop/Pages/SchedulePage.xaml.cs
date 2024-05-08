@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Functions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,10 @@ namespace mop.Pages
         public SchedulePage()
         {
             InitializeComponent();
-            orders = new List<Orders>(DBConnection.mop.Orders.ToList());
+            if (AuthorizationFunc.loggedUser.PostID == 1)
+                orders = new List<Orders>(DBConnection.mop.Orders.Where(i=>i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList());
+            else
+                orders = new List<Orders>(DBConnection.mop.Orders.ToList());
             this.DataContext = this;
         }
 

@@ -43,7 +43,7 @@
             </TextBlock>
 
             <Border CornerRadius="26"
-                    Margin="0 10">
+                    Margin="0 10" x:Name="ordBr">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -62,7 +62,8 @@
             </Border>
 
             <Border CornerRadius="26"
-                    Margin="0 10">
+                    Margin="0 10"
+                    x:Name="infBr">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#C0D5B3" Offset="0"/>

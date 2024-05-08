@@ -32,6 +32,11 @@ namespace mop.Pages
             {
                 OrderBtn.Content = "формирование бригады";
             }
+            if (AuthorizationFunc.loggedUser.PostID == 1)
+            {
+                ordBr.Visibility = Visibility.Hidden;
+                infBr.Visibility = Visibility.Hidden;
+            }
         }
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
