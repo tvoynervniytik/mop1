@@ -31,10 +31,12 @@ namespace mop.DB
         public Nullable<int> EducationID { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public Nullable<int> BrigadeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Brigades> Brigades { get; set; }
         public virtual Education Education { get; set; }
         public virtual Posts Posts { get; set; }
+        public virtual Brigades Brigades1 { get; set; }
     }
 }

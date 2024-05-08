@@ -63,6 +63,7 @@
           <Property Name="EducationID" Type="int" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrigadeID" Type="int" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -135,6 +136,18 @@
             </Principal>
             <Dependent Role="Clients">
               <PropertyRef Name="ClientTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Brigades">
+          <End Role="Brigades" Type="Self.Brigades" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigades">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="BrigadeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -221,6 +234,10 @@
             <End Role="ClientTypes" EntitySet="ClientTypes" />
             <End Role="Clients" EntitySet="Clients" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employees_Brigades" Association="Self.FK_Employees_Brigades">
+            <End Role="Brigades" EntitySet="Brigades" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employees_Education" Association="Self.FK_Employees_Education">
             <End Role="Education" EntitySet="Education" />
             <End Role="Employees" EntitySet="Employees" />
@@ -265,6 +282,7 @@
           <Property Name="HeadID" Type="Int32" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Brigades_Employees" FromRole="Brigades" ToRole="Employees" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Brigades" FromRole="Brigades" ToRole="Orders" />
+          <NavigationProperty Name="Employees1" Relationship="mopModel.FK_Employees_Brigades" FromRole="Brigades" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -307,6 +325,8 @@
           <NavigationProperty Name="Brigades" Relationship="Self.FK_Brigades_Employees" FromRole="Employees" ToRole="Brigades" />
           <NavigationProperty Name="Education" Relationship="Self.FK_Employees_Education" FromRole="Employees" ToRole="Education" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Employees_Posts" FromRole="Employees" ToRole="Posts" />
+          <Property Name="BrigadeID" Type="Int32" />
+          <NavigationProperty Name="Brigades1" Relationship="mopModel.FK_Employees_Brigades" FromRole="Employees" ToRole="Brigades" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -478,6 +498,10 @@
             <End Role="ClientTypes" EntitySet="ClientTypes" />
             <End Role="Clients" EntitySet="Clients" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employees_Brigades" Association="mopModel.FK_Employees_Brigades">
+            <End Role="Brigades" EntitySet="Brigades" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ClientTypes">
           <Key>
@@ -496,6 +520,18 @@
             </Principal>
             <Dependent Role="Clients">
               <PropertyRef Name="ClientTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Brigades">
+          <End Type="mopModel.Brigades" Role="Brigades" Multiplicity="0..1" />
+          <End Type="mopModel.Employees" Role="Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigades">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="BrigadeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -548,6 +584,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="mopModel.Employees">
               <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="BrigadeID" ColumnName="BrigadeID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

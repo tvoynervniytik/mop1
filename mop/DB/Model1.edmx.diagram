@@ -23,6 +23,7 @@
         <AssociationConnector Association="mopModel.FK_Orders_Services" ManuallyRouted="false" />
         <EntityTypeShape EntityType="mopModel.ClientTypes" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="mopModel.FK_Clients_ClientTypes" />
+        <AssociationConnector Association="mopModel.FK_Employees_Brigades" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
