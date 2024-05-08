@@ -12,27 +12,18 @@ namespace mop.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Clients
+    public partial class ClientTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clients()
+        public ClientTypes()
         {
-            this.Address = new HashSet<Address>();
-            this.Orders = new HashSet<Orders>();
+            this.Clients = new HashSet<Clients>();
         }
     
         public int ID { get; set; }
-        public string Surname { get; set; }
         public string Name { get; set; }
-        public string Patronymic { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> ClientTypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Address { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
-        public virtual ClientTypes ClientTypes { get; set; }
+        public virtual ICollection<Clients> Clients { get; set; }
     }
 }

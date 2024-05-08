@@ -21,6 +21,8 @@
         <AssociationConnector Association="mopModel.FK_Employees_Education" ManuallyRouted="false" />
         <AssociationConnector Association="mopModel.FK_Employees_Posts" ManuallyRouted="false" />
         <AssociationConnector Association="mopModel.FK_Orders_Services" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="mopModel.ClientTypes" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="mopModel.FK_Clients_ClientTypes" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

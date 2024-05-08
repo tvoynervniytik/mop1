@@ -10,11 +10,11 @@
 
     <Grid Background="White">
         <Image Source="/Images/Vector.png"
-       Width="800"
-           Margin="1269,0,-149,306"/>
+               Width="800"
+               Margin="1269,0,-149,306"/>
         <Image Source="/Images/Vector.png"
-       Width="800"
-           Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
+               Width="800"
+               Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -75,13 +75,13 @@
                                             Width="35">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
-                                        <Setter Property="Foreground" Value="#C0D5B3" />
+                                        <Setter Property="Foreground" Value="#B8CEC5" />
                                         <Setter Property="FontWeight" Value="DemiBold"/>
                                     </Style>
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ID}"/>
+                                        <TextBlock Text="{Binding ID}" Foreground="#B8CEC5"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -96,9 +96,9 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Surname}"/>
-                                            <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Patronymic}"/>
+                                            <TextBlock Text="{Binding Surname}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text="{Binding Name}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text="{Binding Patronymic}" Foreground="#B8CEC5"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -114,9 +114,9 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Phone}"/>
-                                            <TextBlock Text="{Binding Email}"/>
-                                            <TextBlock Text="{Binding Passport}"/>
+                                            <TextBlock Text="{Binding Phone}" Foreground="#B7CCCA"/>
+                                            <TextBlock Text="{Binding Email}" Foreground="#B7CCCA"/>
+                                            <TextBlock Text="{Binding Passport}" Foreground="#B7CCCA"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -132,7 +132,7 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Posts.Name}"/>
+                                        <TextBlock Text="{Binding Posts.Name}" Foreground="#B3C9D5"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -146,7 +146,7 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Education.Name}"/>
+                                        <TextBlock Text="{Binding Education.Name}" Foreground="#AABADD"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -161,8 +161,8 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Login}"/>
-                                            <TextBlock Text="{Binding Password}"/>
+                                            <TextBlock Text="{Binding Login}" Foreground="#A3AEE6"/>
+                                            <TextBlock Text="{Binding Password}" Foreground="#A3AEE6"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

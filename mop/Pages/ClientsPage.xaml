@@ -26,9 +26,6 @@
             </Button.Foreground>
         </Button>
 
-        <StackPanel Width="20">
-
-        </StackPanel>
         <Image Source="/Images/Vector.png"
                Width="800"
                    Margin="1269,0,-149,306"/>
@@ -45,5 +42,165 @@
             </Image.RenderTransform>
         </Image>
 
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="сотрудники" 
+           FontSize="70" 
+           Margin="0 0 0 15"
+           FontWeight="Bold"
+           HorizontalAlignment="Center">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+            <ListView x:Name="employeesLv" 
+                    Width="1200" Height="400"
+                    FontSize="20"
+                    ItemsSource="{Binding clients}"
+              >
+                <ListView.Foreground>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListView.Foreground>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Id" 
+                                          Width="35">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B8CEC5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ID}" Foreground="#B8CEC5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="ФИО" 
+                                          Width="500">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B8CEC5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Surname}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text=" "/>
+                                            <TextBlock Text="{Binding Name}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text=" "/>
+                                            <TextBlock Text="{Binding Patronymic}" Foreground="#B8CEC5"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="контакты" 
+                                          Width="220">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B7CCCA" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Phone}" Foreground="#B7CCCA"/>
+                                            <TextBlock Text="{Binding Email}" Foreground="#B7CCCA"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="тип клиента" 
+                                          Width="380">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B3C9D5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ClientTypes.Name}" Foreground="#B3C9D5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        <StackPanel Orientation="Horizontal" Height="80">
+            <Border CornerRadius="40"
+                Width="80">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Content="+"
+                    FontSize="40"
+                    FontWeight="Bold"
+                    Height="80"
+                    ToolTip="добавление"
+                    Foreground="White"
+                    Background="Transparent"
+                    BorderThickness="0" 
+                    x:Name="addBtn" Click="addBtn_Click" HorizontalAlignment="Left" Width="80"/>
+            </Border>
+            <Border CornerRadius="40"
+                Width="80">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Content="×"
+                    FontSize="40"
+                    FontWeight="Bold"
+                    Height="80"
+                    ToolTip="удаление"
+                    Foreground="White"
+                    Background="Transparent"
+                    BorderThickness="0" 
+                    x:Name="delBtn" Click="delBtn_Click"/>
+            </Border>
+            <Border CornerRadius="40"
+                Width="80">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Button Content="⋮"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="80"
+                        ToolTip="изменение"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="editBtn" Click="editBtn_Click"/>
+            </Border>
+        </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
