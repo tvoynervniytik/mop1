@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mop.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace mop.Pages
     /// </summary>
     public partial class SchedulePage : Page
     {
+        public static List<Orders> orders { get; set; }
         public SchedulePage()
         {
             InitializeComponent();
+            orders = new List<Orders>(DBConnection.mop.Orders.ToList());
+            this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -33,6 +37,21 @@ namespace mop.Pages
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MenuFirstPage());
+        }
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

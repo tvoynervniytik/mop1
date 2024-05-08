@@ -25,22 +25,6 @@
                 </LinearGradientBrush>
             </Button.Foreground>
         </Button>
-
-        <StackPanel VerticalAlignment="Center">
-            <TextBlock Text="расписание" 
-                       FontSize="70" 
-                       Margin="0 0 0 15"
-                       FontWeight="Bold"
-                       HorizontalAlignment="Center">
-                <TextBlock.Foreground>
-                    <LinearGradientBrush>
-                        <GradientStop Color="#C0D5B3" Offset="0"/>
-                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
-                        <GradientStop Color="#A3AEE6" Offset="1"/>
-                    </LinearGradientBrush>
-                </TextBlock.Foreground>
-            </TextBlock>
-        </StackPanel>
         <Image Source="/Images/Vector.png"
                Width="800"
                    Margin="1269,0,-149,306"/>
@@ -56,6 +40,115 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="расписание" 
+                       FontSize="70" 
+                       Margin="0 0 0 15"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center">
+                <TextBlock.Foreground>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </TextBlock.Foreground>
+            </TextBlock>
+
+            <ListView x:Name="employeesLv" 
+                      Width="1000" Height="400"
+                      FontSize="20"
+                      ItemsSource="{Binding orders}"
+                >
+                <ListView.Foreground>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#C0D5B3" Offset="0"/>
+                        <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                        <GradientStop Color="#A3AEE6" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListView.Foreground>
+                <ListView.View>
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Header="Id" 
+                                            Width="100">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B8CEC5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ID}" Foreground="#B8CEC5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Id клиента" 
+                                            Width="200">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B8CEC5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Clients.ID}" Foreground="#B8CEC5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="id бригады" 
+                                            Width="200">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B7CCCA" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding BrigadeID}" Foreground="#B7CCCA"/>
+
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="услуга" 
+                                            Width="300">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B3C9D5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Services.Name}" Foreground="#B3C9D5"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="дата" 
+                                            Width="130">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#A3AEE6" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Date}" Foreground="#A3AEE6"/>
+
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
 
     </Grid>
 </Page>
