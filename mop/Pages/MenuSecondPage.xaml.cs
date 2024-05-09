@@ -26,15 +26,18 @@ namespace mop.Pages
             InitializeComponent();
             if (AuthorizationFunc.loggedUser.PostID == 2)
             {
-                emplBtn.Visibility = Visibility.Hidden;
                 emplBrd.Visibility = Visibility.Hidden;
             }
             if (AuthorizationFunc.loggedUser.PostID == 3)
             {
-                clientsBtn.Visibility = Visibility.Hidden;
                 clientsBrd.Visibility = Visibility.Hidden;
-                servicessBtn.Visibility = Visibility.Hidden;
                 servicesBrd.Visibility = Visibility.Hidden;
+                requestBr.Visibility = Visibility.Hidden;
+            }
+            if (AuthorizationFunc.loggedUser.PostID == 1)
+            {
+                MngStP.Visibility = Visibility.Hidden;
+                requestBr.Visibility = Visibility.Hidden;
             }
         }
 
@@ -71,6 +74,11 @@ namespace mop.Pages
         private void addressesBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddressesPage());
+        }
+
+        private void profileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProfilePage());
         }
     }
 }

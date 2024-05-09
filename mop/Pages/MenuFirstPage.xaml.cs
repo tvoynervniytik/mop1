@@ -35,7 +35,6 @@ namespace mop.Pages
             if (AuthorizationFunc.loggedUser.PostID == 1)
             {
                 ordBr.Visibility = Visibility.Hidden;
-                infBr.Visibility = Visibility.Hidden;
             }
         }
 
