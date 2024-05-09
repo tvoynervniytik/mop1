@@ -85,6 +85,18 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Salary" Type="int" />
         </EntityType>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" />
+          <Property Name="AtributeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemEditted" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Checking" Type="bit" />
+          <Property Name="Done" Type="bit" />
+        </EntityType>
         <EntityType Name="Services">
           <Key>
             <PropertyRef Name="ID" />
@@ -212,6 +224,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Requests_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище mopModelContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brigades" EntityType="Self.Brigades" Schema="dbo" store:Type="Tables" />
@@ -221,6 +245,7 @@
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Address_Clients" Association="Self.FK_Address_Clients">
@@ -258,6 +283,10 @@
           <AssociationSet Name="FK_Orders_Services" Association="Self.FK_Orders_Services">
             <End Role="Services" EntitySet="Services" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Employees" Association="Self.FK_Requests_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Requests" EntitySet="Requests" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -328,6 +357,7 @@
           <NavigationProperty Name="Posts" Relationship="Self.FK_Employees_Posts" FromRole="Employees" ToRole="Posts" />
           <Property Name="BrigadeID" Type="Int32" />
           <NavigationProperty Name="Brigades1" Relationship="mopModel.FK_Employees_Brigades" FromRole="Employees" ToRole="Brigades" />
+          <NavigationProperty Name="Requests" Relationship="mopModel.FK_Requests_Employees" FromRole="Employees" ToRole="Requests" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -504,6 +534,11 @@
             <End Role="Brigades" EntitySet="Brigades" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="Requests" EntityType="mopModel.Requests" />
+          <AssociationSet Name="FK_Requests_Employees" Association="mopModel.FK_Requests_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ClientTypes">
           <Key>
@@ -534,6 +569,31 @@
             </Principal>
             <Dependent Role="Employees">
               <PropertyRef Name="BrigadeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="AtributeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Checking" Type="Boolean" />
+          <Property Name="Done" Type="Boolean" />
+          <Property Name="EmployeeID" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="mopModel.FK_Requests_Employees" FromRole="Requests" ToRole="Employees" />
+          <Property Name="ItemEditted" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Requests_Employees">
+          <End Type="mopModel.Employees" Role="Employees" Multiplicity="0..1" />
+          <End Type="mopModel.Requests" Role="Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -648,6 +708,19 @@
             <EntityTypeMapping TypeName="mopModel.ClientTypes">
               <MappingFragment StoreEntitySet="ClientTypes">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="mopModel.Requests">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="ItemEditted" ColumnName="ItemEditted" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Done" ColumnName="Done" />
+                <ScalarProperty Name="Checking" ColumnName="Checking" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AtributeName" ColumnName="AtributeName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

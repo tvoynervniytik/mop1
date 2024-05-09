@@ -24,6 +24,8 @@
         <EntityTypeShape EntityType="mopModel.ClientTypes" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="mopModel.FK_Clients_ClientTypes" />
         <AssociationConnector Association="mopModel.FK_Employees_Brigades" />
+        <EntityTypeShape EntityType="mopModel.Requests" Width="1.5" PointX="3.75" PointY="14.75" />
+        <AssociationConnector Association="mopModel.FK_Requests_Employees" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

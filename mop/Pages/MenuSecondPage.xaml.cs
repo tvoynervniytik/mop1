@@ -24,20 +24,18 @@ namespace mop.Pages
         public MenuSecondPage()
         {
             InitializeComponent();
-            if (AuthorizationFunc.loggedUser.PostID == 2)
+            if (AuthorizationFunc.loggedUser.PostID == 2) //clients meneger
             {
                 emplBrd.Visibility = Visibility.Hidden;
             }
-            if (AuthorizationFunc.loggedUser.PostID == 3)
+            if (AuthorizationFunc.loggedUser.PostID == 3) //employees meneger
             {
                 clientsBrd.Visibility = Visibility.Hidden;
                 servicesBrd.Visibility = Visibility.Hidden;
-                requestBr.Visibility = Visibility.Hidden;
             }
-            if (AuthorizationFunc.loggedUser.PostID == 1)
+            if (AuthorizationFunc.loggedUser.PostID == 1) //worker
             {
                 MngStP.Visibility = Visibility.Hidden;
-                requestBr.Visibility = Visibility.Hidden;
             }
         }
 
@@ -79,6 +77,12 @@ namespace mop.Pages
         private void profileBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ProfilePage());
+           
+        }
+
+        private void requestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RequestsPage());
         }
     }
 }

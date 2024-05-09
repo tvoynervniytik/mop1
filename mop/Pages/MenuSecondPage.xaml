@@ -170,7 +170,7 @@
                         x:Name="requestBtn"
                         Foreground="White"
                         Background="Transparent"
-                        BorderThickness="0"/>
+                        BorderThickness="0" Click="requestBtn_Click"/>
             </Border>
         </StackPanel>
         <Image Source="/Images/Vector.png"

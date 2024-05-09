@@ -18,6 +18,7 @@ namespace mop.DB
         public Employees()
         {
             this.Brigades = new HashSet<Brigades>();
+            this.Requests = new HashSet<Requests>();
         }
     
         public int ID { get; set; }
@@ -38,5 +39,7 @@ namespace mop.DB
         public virtual Education Education { get; set; }
         public virtual Posts Posts { get; set; }
         public virtual Brigades Brigades1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Requests> Requests { get; set; }
     }
 }
