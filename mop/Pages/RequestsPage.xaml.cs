@@ -1,5 +1,6 @@
 ﻿using mop.DB;
 using mop.Functions;
+using mop.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +69,11 @@ namespace mop.Pages
         private void requestsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (AuthorizationFunc.loggedUser.PostID == 3)
-                NavigationService.Navigate(new )
+            {
+                EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(requestsLv.SelectedItem as Requests);
+                employeeEditWindow.Show();
+            }
+
 
 
         }

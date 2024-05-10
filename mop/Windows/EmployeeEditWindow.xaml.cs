@@ -24,53 +24,19 @@ namespace mop.Windows
     {
         public static List<Posts> posts { get; set; }
         public static List<Education> educations { get; set; }
-        private string name;
-        private string surname;
-        private string patronymic;
-        private string email;
-        private string phone;
-        private string passport;
-        private string login;
-        private string password;
-        private int education;
-        public EmployeeEditWindow()
+        private Employees empl = AuthorizationFunc.loggedUser;
+        public EmployeeEditWindow(Requests request)
         {
             InitializeComponent();
-            posts = new List<Posts>(DBConnection.mop.Posts.ToList());
-            educations = new List<Education>(DBConnection.mop.Education.ToList());
-            Employees employee = AuthorizationFunc.loggedUser;
-            nameTb.Text = employee.Name;
-            name = employee.Name;
-            //
-            surnameTb.Text = employee.Surname;
-            surname = employee.Surname;
-            //
-            emailTb.Text = employee.Email;
-            email = employee.Email;
-            //
-            education = (int)employee.EducationID;
-            //
-            patronymicTb.Text = employee.Patronymic;
-            patronymic = employee.Patronymic;
-            //
-            passportTb.Text = employee.Passport;
-            passport = employee.Passport;
-            //
-            passwordTb.Text = employee.Password;
-            password = employee.Password;
-            //
-            loginTb.Text = employee.Login;
-            login = employee.Login;
-            //
-            phoneTb.Text = employee.Phone;
-            phone = employee.Phone;
+            
             this.DataContext = this;
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            MessageBox.Show($"Сотрудник {surnameTb.Text} {nameTb.Text.First()}. {patronymicTb.Text.First()}. успешно изменён");
+            MessageBox.Show($"Сотрудник {empl.Surname} {empl.Surname.First()}. {empl.Patronymic.First()}. успешно изменён");
+            
         }
     }
 }
