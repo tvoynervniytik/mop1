@@ -45,7 +45,11 @@ namespace mop.Pages
 
         private void InfBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuSecondPage());
+            if (AuthorizationFunc.loggedUser.PostID == 1)
+
+                NavigationService.Navigate(new ProfilePage());
+            else
+                NavigationService.Navigate(new MenuSecondPage());
         }
 
         private void ScheduleBtn_Click(object sender, RoutedEventArgs e)

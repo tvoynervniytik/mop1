@@ -32,7 +32,7 @@ namespace mop.Pages
             {
                 requests = new List<Requests>(DBConnection.mop.Requests.
                     Where(i => i.EmployeeID == AuthorizationFunc.loggedUser.ID).ToList());
-               
+                mngSp.Visibility = Visibility.Hidden;
             }
             this.DataContext = this;
         }
@@ -44,6 +44,35 @@ namespace mop.Pages
             else
                 NavigationService.Navigate(new ProfilePage());
         }
+         public void Refresh()
+         {
+            requestsLv.ItemsSource = new List<Requests>(DBConnection.mop.Requests.ToList());
+         }
+
+        private void checkedBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var a = requestsLv.SelectedItem as Requests;
+            DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Checking = true;
+            Refresh();
+        }
+
+
+        private void doneBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var a = requestsLv.SelectedItem as Requests;
+            DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Done = true;
+            DBConnection.mop.SaveChanges();
+            Refresh();
+        }
+
+        private void requestsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AuthorizationFunc.loggedUser.PostID == 3)
+                NavigationService.Navigate(new )
+
+
+        }
+
 
     }
 }

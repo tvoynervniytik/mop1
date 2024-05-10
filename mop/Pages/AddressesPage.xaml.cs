@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mop.DB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace mop.Pages
     /// </summary>
     public partial class AddressesPage : Page
     {
+        public static List<Address> addresses {  get; set; }
         public AddressesPage()
         {
             InitializeComponent();
+            addresses = new List<Address>(DBConnection.mop.Address.ToList());
+            this.DataContext = this;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

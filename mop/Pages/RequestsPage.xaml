@@ -56,10 +56,11 @@
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
             </TextBlock>
-            <ListView x:Name="employeesLv" 
+            <ListView x:Name="requestsLv" 
                   Width="1200" Height="400"
                   FontSize="20"
-                  ItemsSource="{Binding requests}"
+                  ItemsSource="{Binding requests}" SelectionChanged="requestsLv_SelectionChanged"
+                      
             >
                 <ListView.Foreground>
                     <LinearGradientBrush>
@@ -95,8 +96,8 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="атрибут" 
-                                        Width="180">
+                            <GridViewColumn Header="атрибут"
+                                        Width="180" x:Name="AttributeHd">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#B7CCCA" />
@@ -150,8 +151,8 @@
 
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <RadioButton Content="{Binding Cheking}" 
-                                                     Foreground="#AABADD"
+                                        <TextBlock Text="{Binding Checking}" 
+                                                     Foreground="#AABADD" 
                                                      />
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -166,8 +167,7 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <RadioButton Content="{Binding Done}" 
-                                                     Width="20"
+                                        <TextBlock Text="{Binding Done}" 
                                                      Foreground="#AABADD"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -176,6 +176,48 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
+            <StackPanel Orientation="Horizontal" Height="80" x:Name="mngSp">
+
+                <Border CornerRadius="40"
+                Width="80">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Content="✓"
+                    FontSize="40"
+                    FontWeight="Bold"
+                    Height="80"
+                    ToolTip="проверка пройдена"
+                    Foreground="White"
+                    Background="Transparent"
+                    BorderThickness="0" 
+                    x:Name="checkedBtn" Click="checkedBtn_Click"/>
+                </Border>
+                <Border CornerRadius="40"
+                Width="80">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Content="☑"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="80"
+                        ToolTip="изменено"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="doneBtn" Click="doneBtn_Click"/>
+                </Border>
+            </StackPanel>
         </StackPanel>
 
     </Grid>
