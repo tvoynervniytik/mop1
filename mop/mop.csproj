@@ -148,10 +148,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\AddBrigadesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\AddressesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -206,9 +202,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\AddBrigadesPage.xaml.cs">
-      <DependentUpon>AddBrigadesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\AddressesPage.xaml.cs">
       <DependentUpon>AddressesPage.xaml</DependentUpon>
     </Compile>

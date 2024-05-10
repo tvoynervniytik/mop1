@@ -27,6 +27,7 @@ namespace mop.Pages
             if (AuthorizationFunc.loggedUser.PostID == 2) //clients meneger
             {
                 emplBrd.Visibility = Visibility.Hidden;
+                requestBr.Visibility = Visibility.Hidden;
             }
             if (AuthorizationFunc.loggedUser.PostID == 3) //employees meneger
             {
@@ -46,7 +47,15 @@ namespace mop.Pages
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuFirstPage());
+            if (AuthorizationFunc.loggedUser.PostID == 3)
+            {
+                var result = MessageBox.Show("Вы уверены, что хотите выйти из профиля???", "Подтверждение выхода",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                    NavigationService.Navigate(new AuthorizationPage());
+            }
+            else
+                NavigationService.Navigate(new MenuFirstPage());
         }
 
         private void brigadeBtn_Click(object sender, RoutedEventArgs e)
@@ -82,7 +91,7 @@ namespace mop.Pages
 
         private void requestBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RequestsPage());
+            NavigationService.Navigate(new RequestsPage()); 
         }
     }
 }

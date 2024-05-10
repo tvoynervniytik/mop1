@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mop.Functions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace mop.Pages
         public ProfilePage()
         {
             InitializeComponent();
+            if (AuthorizationFunc.loggedUser.PostID == 3) //empl mng
+                requestBr.Visibility = Visibility.Hidden;
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
@@ -33,6 +36,11 @@ namespace mop.Pages
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MenuSecondPage());
+        }
+
+        private void requestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RequestsPage());
         }
     }
 }

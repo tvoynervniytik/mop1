@@ -82,7 +82,7 @@
             </Border>
 
             <Border CornerRadius="26"
-                    Margin="0 10">
+                    Margin="0 10" x:Name="ScheduleBr">
                 <Border.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#C0D5B3" Offset="0"/>

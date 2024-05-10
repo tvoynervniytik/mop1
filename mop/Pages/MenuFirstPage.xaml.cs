@@ -27,10 +27,7 @@ namespace mop.Pages
             if (AuthorizationFunc.loggedUser.PostID == 2)
             {
                 OrderBtn.Content = "оформление заказа";
-            }
-            if (AuthorizationFunc.loggedUser.PostID == 3)
-            {
-                OrderBtn.Content = "формирование бригады";
+                ScheduleBr.Visibility = Visibility.Hidden;    
             }
             if (AuthorizationFunc.loggedUser.PostID == 1)
             {
@@ -43,10 +40,6 @@ namespace mop.Pages
             if (AuthorizationFunc.loggedUser.PostID == 2)
             {
                 NavigationService.Navigate(new OrdersPage());
-            }
-            if (AuthorizationFunc.loggedUser.PostID == 3)
-            {
-                NavigationService.Navigate(new AddBrigadesPage());
             }
         }
 

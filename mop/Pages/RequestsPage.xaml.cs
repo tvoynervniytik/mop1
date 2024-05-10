@@ -26,17 +26,23 @@ namespace mop.Pages
         public RequestsPage()
         {
             InitializeComponent();
-            if (AuthorizationFunc.loggedUser.PostID == 3)
+            if (AuthorizationFunc.loggedUser.PostID == 3) //meneger employees
                 requests = new List<Requests>(DBConnection.mop.Requests.ToList());
             else
+            {
                 requests = new List<Requests>(DBConnection.mop.Requests.
                     Where(i => i.EmployeeID == AuthorizationFunc.loggedUser.ID).ToList());
+               
+            }
             this.DataContext = this;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuSecondPage());
+            if (AuthorizationFunc.loggedUser.PostID == 3) //meneger employees
+                NavigationService.Navigate(new MenuSecondPage());
+            else
+                NavigationService.Navigate(new ProfilePage());
         }
 
     }

@@ -34,7 +34,10 @@ namespace mop.Pages
             password = passwordTb.Password.Trim();
 
             AuthorizationFunc.Authorization(login, password);
-            NavigationService.Navigate(new MenuFirstPage());
+            if (AuthorizationFunc.loggedUser.PostID == 3)
+                NavigationService.Navigate(new MenuSecondPage());
+            else
+                NavigationService.Navigate(new MenuFirstPage());
         }
     }
 }

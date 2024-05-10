@@ -84,6 +84,21 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
+                            <GridViewColumn Header="Название" 
+                                   Width="300">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#B8CEC5" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Foreground="#B8CEC5"/>
+                                            
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
                             <GridViewColumn Header="Описание услуги" 
                                    Width="400">
                                 <GridViewColumn.HeaderContainerStyle>
@@ -98,21 +113,6 @@
                                         <TextBlock Text="{Binding Description}" 
                                                    TextWrapping="Wrap"
                                                    Foreground="#B8CEC5"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="Название" 
-                                   Width="300">
-                                <GridViewColumn.HeaderContainerStyle>
-                                    <Style  TargetType="GridViewColumnHeader">
-                                        <Setter Property="Foreground" Value="#B8CEC5" />
-                                        <Setter Property="FontWeight" Value="DemiBold"/>
-                                    </Style>
-                                </GridViewColumn.HeaderContainerStyle>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" Foreground="#B8CEC5"/>
-                                            
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
