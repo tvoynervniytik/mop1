@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,7 @@ namespace mop.Windows
                 DBConnection.mop.Employees.Add(employee);
                 DBConnection.mop.SaveChanges();
                 this.Close();
+                NavigationService.GetNavigationService(new EmployeesPage());
                 MessageBox.Show($"Сотрудник {surnameTb.Text} {nameTb.Text.First()}. {patronymicTb.Text.First()}. успешно добавлен");
             }
         }

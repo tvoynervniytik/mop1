@@ -335,7 +335,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-
+            <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Horizontal" Height="80" x:Name="mngSp">
 
                 <Border CornerRadius="40"
@@ -377,7 +377,29 @@
                         x:Name="doneBtn" Click="doneBtn_Click"/>
                 </Border>-->
             </StackPanel>
-        </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="1040 0 0 0">
+                    <Border CornerRadius="40" Width="80">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="#C0D5B3" Offset="0"/>
+                                <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                                <GradientStop Color="#A3AEE6" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Button Content="🗘"
+            FontSize="40"
+            FontWeight="Bold"
+            Height="80"
+            ToolTip="добавление"
+            Foreground="White"
+            Background="Transparent"
+            BorderThickness="0" 
+            x:Name="updateBtn" HorizontalAlignment="Left" Width="80" Click="updateBtn_Click"/>
+                    </Border>
+                </StackPanel>
+
+
+            </StackPanel></StackPanel>
 
     </Grid>
 </Page>

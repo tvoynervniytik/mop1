@@ -74,28 +74,34 @@ namespace mop.Pages
 
         private void checkedBtn_Click(object sender, RoutedEventArgs e)
         {
-            var a = requestsLv.SelectedItem as Requests;
-            DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Checking = true;
-            Refresh();
+            if (requestsLv.SelectedItem != null)
+            {
+                var a = requestsLv.SelectedItem as Requests;
+                DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Checking = true;
+                Refresh();
+            }
         }
         private void requestsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (AuthorizationFunc.loggedUser.PostID == 3)
             { 
                 var a = requestsLv.SelectedItem as Requests;
-                if (a.Checking == true)
+                if (a != null)
                 {
-                    if (a.Done == true) MessageBox.Show
-                        ("Запрос уже исполнен!", "done error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    else
+                    if (a.Checking == true)
                     {
-                        EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(a);
-                        employeeEditWindow.Show();
+                        if (a.Done == true) MessageBox.Show
+                            ("Запрос уже исполнен!", "done error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        else
+                        {
+                            EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(a);
+                            employeeEditWindow.Show();
+                        }
+
                     }
-                    
+                    else MessageBox.Show
+                            ("Проверка данного запроса не проведена, проверьте документы!", "checking error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                else MessageBox.Show
-                        ("Проверка данного запроса не проведена, проверьте документы!", "checking error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -115,6 +121,11 @@ namespace mop.Pages
         }
 
         private void dateDp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
             Refresh();
         }

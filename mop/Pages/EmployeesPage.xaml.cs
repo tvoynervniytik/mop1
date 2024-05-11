@@ -22,12 +22,16 @@ namespace mop.Pages
     /// </summary>
     public partial class EmployeesPage : Page
     {
-        public static List<Employees> employees {  get; set; }
+        public static List<Employees> employees { get; set; }
         public EmployeesPage()
         {
             InitializeComponent();
             employees = new List<Employees>(DBConnection.mop.Employees.ToList());
             this.DataContext = this;
+        }
+        public void Refresh()
+        {
+            employeesLv.ItemsSource = new List<Employees>(DBConnection.mop.Employees.ToList());
         }
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +44,15 @@ namespace mop.Pages
         }
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
+            var del = employeesLv.SelectedItem as Employees;
+            DBConnection.mop.Employees.Remove(del);
+            DBConnection.mop.SaveChanges();
+            Refresh();
+        }
 
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
         }
     }
 }

@@ -172,6 +172,8 @@
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal">
+                
+            <StackPanel Orientation="Horizontal">
                 <Border CornerRadius="40"
                     Width="80">
                     <Border.Background>
@@ -201,17 +203,40 @@
                         </LinearGradientBrush>
                     </Border.Background>
                     <Button Content="×"
+                            FontSize="40"
+                            FontWeight="Bold"
+                            Height="80"
+                            ToolTip="удаление"
+                            Foreground="White"
+                            Background="Transparent"
+                            BorderThickness="0" 
+                            x:Name="delBtn" Click="delBtn_Click" HorizontalAlignment="Left" Width="80"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="960 0 0 0">
+                <Border CornerRadius="40"
+                    Width="80">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                        <Button Content="🗘"
                         FontSize="40"
                         FontWeight="Bold"
                         Height="80"
-                        ToolTip="удаление"
+                        ToolTip="добавление"
                         Foreground="White"
                         Background="Transparent"
                         BorderThickness="0" 
-                        x:Name="delBtn" Click="delBtn_Click"/>
+                        x:Name="updateBtn" HorizontalAlignment="Left" Width="80" Click="updateBtn_Click"/>
                 </Border>
             </StackPanel>
-        </StackPanel>
+       
+            </StackPanel> </StackPanel>
 
     </Grid>
 </Page>
