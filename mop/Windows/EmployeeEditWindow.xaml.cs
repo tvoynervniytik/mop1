@@ -87,6 +87,12 @@ namespace mop.Windows
                 req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
+            if (req.AtributeName == "образование") 
+            {
+                employee.EducationID = DBConnection.mop.Education.FirstOrDefault(i=>i.Name==req.ItemEditted).ID;
+                req.Done = true;
+                DBConnection.mop.SaveChanges();
+            }
             this.Close();
             MessageBox.Show($"Сотрудник {empl.Surname} {empl.Surname.First()}. {empl.Patronymic.First()}. успешно изменён");
             
