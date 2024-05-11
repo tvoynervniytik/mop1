@@ -37,46 +37,54 @@ namespace mop.Windows
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            Employees employee = AuthorizationFunc.loggedUser;
+            Employees employee = DBConnection.mop.Employees.FirstOrDefault(i=>i.ID == req.EmployeeID);
             if (req.AtributeName == "имя") 
             {
                 employee.Name = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             if (req.AtributeName == "фамилия") 
             {
                 employee.Surname = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             if (req.AtributeName == "отчество") 
             {
                 employee.Patronymic = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             if (req.AtributeName == "почта") 
             {
                 employee.Email = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             if (req.AtributeName == "телефон") 
             {
                 employee.Phone = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             if (req.AtributeName == "логин") 
             {
                 employee.Login = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             if (req.AtributeName == "пароль")
             {
                 employee.Password = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
 
             if (req.AtributeName == "паспорт") 
             {
                 employee.Passport = req.ItemEditted;
+                req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
             this.Close();

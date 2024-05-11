@@ -45,9 +45,31 @@ namespace mop.Pages
             else
                 NavigationService.Navigate(new ProfilePage());
         }
-         public void Refresh()
-         {
-            requestsLv.ItemsSource = new List<Requests>(DBConnection.mop.Requests.ToList());
+        public void Refresh()
+        {
+            var itemssource = new List<Requests>(DBConnection.mop.Requests.ToList());
+
+            //условие
+            if (surnameTb.Text == "") { }
+            else
+                itemssource = itemssource.Where(i => i.Employees.Surname.ToLower().StartsWith(surnameTb.Text.Trim().ToLower())).ToList();
+            if (dateDp.SelectedDate == null) { }
+            else //dateDp
+                itemssource = itemssource.Where(i => i.Date == (DateTime)dateDp.SelectedDate).ToList();
+            if (checkingCb.SelectedItem == null || checkingCb.SelectedIndex == 0) { }
+            else //checkingCb
+                if (checkingCb.SelectedIndex == 1)
+                    itemssource = itemssource.Where(i => i.Checking == true).ToList();
+                else
+                    itemssource = itemssource.Where(i => i.Checking == false).ToList();
+            if (doneCb.SelectedItem == null || doneCb.SelectedIndex == 0) { }
+            else //doneCb
+                if (doneCb.SelectedIndex == 1)
+                    itemssource = itemssource.Where(i => i.Done == true).ToList();
+                else
+                    itemssource = itemssource.Where(i => i.Done == false).ToList();
+
+            requestsLv.ItemsSource = itemssource;
          }
 
         private void checkedBtn_Click(object sender, RoutedEventArgs e)
@@ -56,28 +78,39 @@ namespace mop.Pages
             DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Checking = true;
             Refresh();
         }
-
-
-        private void doneBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var a = requestsLv.SelectedItem as Requests;
-            DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Done = true;
-            DBConnection.mop.SaveChanges();
-            Refresh();
-        }
-
         private void requestsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (AuthorizationFunc.loggedUser.PostID == 3)
-            {
-                EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(requestsLv.SelectedItem as Requests);
-                employeeEditWindow.Show();
+            { 
+                var a = requestsLv.SelectedItem as Requests;
+                if (a.Checking == true)
+                {
+                    EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(a);
+                    employeeEditWindow.Show();
+                }
+                else MessageBox.Show
+                        ("Проверка данного запроса не проведена, проверьте документы!", "checking error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
-
         }
 
+        private void doneCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
 
+        private void checkingCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void surnameTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateDp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
     }
 }

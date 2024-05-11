@@ -77,7 +77,7 @@ namespace mop.Pages
             Employees employee = AuthorizationFunc.loggedUser;
             if (AuthorizationFunc.loggedUser.PostID == 3) //empl mng
             {
-                
+                MessageBox.Show("Данные сохранены");
                 employee.Name = nameTb.Text.Trim();
                 employee.Surname = surnameTb.Text.Trim();
                 employee.Email = emailTb.Text.Trim();
