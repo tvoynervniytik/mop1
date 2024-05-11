@@ -210,25 +210,6 @@
                         BorderThickness="0" 
                         x:Name="delBtn" Click="delBtn_Click"/>
                 </Border>
-                <Border CornerRadius="40"
-                    Width="80">
-                    <Border.Background>
-                        <LinearGradientBrush>
-                            <GradientStop Color="#C0D5B3" Offset="0"/>
-                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
-                            <GradientStop Color="#A3AEE6" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Button Content="⋮"
-                            FontSize="40"
-                            FontWeight="Bold"
-                            Height="80"
-                            ToolTip="изменение"
-                            Foreground="White"
-                            Background="Transparent"
-                            BorderThickness="0" 
-                            x:Name="editBtn" Click="editBtn_Click"/>
-                </Border>
             </StackPanel>
         </StackPanel>
 

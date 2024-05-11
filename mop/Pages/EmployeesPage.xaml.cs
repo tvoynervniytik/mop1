@@ -29,24 +29,16 @@ namespace mop.Pages
             employees = new List<Employees>(DBConnection.mop.Employees.ToList());
             this.DataContext = this;
         }
-
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
-
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             EmployeeAddWindow employeeAddWindow = new EmployeeAddWindow();
             employeeAddWindow.Show();
         }
-
         private void delBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void editBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

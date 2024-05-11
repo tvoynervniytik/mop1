@@ -80,7 +80,6 @@ namespace mop.Windows
                 req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
-
             if (req.AtributeName == "паспорт") 
             {
                 employee.Passport = req.ItemEditted;
@@ -93,9 +92,8 @@ namespace mop.Windows
                 req.Done = true;
                 DBConnection.mop.SaveChanges();
             }
+            MessageBox.Show($"Сотрудник {employee.Surname} {employee.Surname.First()}. {employee.Patronymic.First()}. успешно изменён");
             this.Close();
-            MessageBox.Show($"Сотрудник {empl.Surname} {empl.Surname.First()}. {empl.Patronymic.First()}. успешно изменён");
-            
         }
     }
 }

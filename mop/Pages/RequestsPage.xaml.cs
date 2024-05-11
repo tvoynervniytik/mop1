@@ -85,8 +85,14 @@ namespace mop.Pages
                 var a = requestsLv.SelectedItem as Requests;
                 if (a.Checking == true)
                 {
-                    EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(a);
-                    employeeEditWindow.Show();
+                    if (a.Done == true) MessageBox.Show
+                        ("Запрос уже исполнен!", "done error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    else
+                    {
+                        EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(a);
+                        employeeEditWindow.Show();
+                    }
+                    
                 }
                 else MessageBox.Show
                         ("Проверка данного запроса не проведена, проверьте документы!", "checking error", MessageBoxButton.OK, MessageBoxImage.Error);
