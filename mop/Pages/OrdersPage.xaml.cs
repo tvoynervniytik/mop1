@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Pages.addingPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,10 @@ namespace mop.Pages
             orders = new List<Orders>(DBConnection.mop.Orders.ToList());
             this.DataContext = this;
         }
+        public void Refresh()
+        {
+            ordersLv.ItemsSource = new List<Orders>(DBConnection.mop.Orders.ToList());
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -41,7 +46,7 @@ namespace mop.Pages
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddOrderPage());
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)

@@ -57,7 +57,7 @@
                 </TextBlock.Foreground>
             </TextBlock>
 
-            <ListView x:Name="employeesLv" 
+            <ListView x:Name="ordersLv" 
                       Width="1200" Height="400"
                       FontSize="20"
                       ItemsSource="{Binding orders}"
