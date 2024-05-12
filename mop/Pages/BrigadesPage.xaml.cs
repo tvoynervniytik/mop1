@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,10 @@ namespace mop.Pages
             employees = new List<Employees>(DBConnection.mop.Employees.Where(i => i.PostID == 1).ToList());
             this.DataContext = this;
         }
+        public void Refresh()
+        {
+            brigadesLv.ItemsSource = DBConnection.mop.Employees.ToList();
+        }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -36,17 +41,25 @@ namespace mop.Pages
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddBrigade addBrigade = new AddBrigade();
+            addBrigade.Show();
         }
 
-        private void delBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
+            var a = brigadesLv.SelectedItem as Employees;
+            if (a == null)
+                MessageBox.Show("Заполните все данные!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
 
+            }
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
         }
     }
 }
