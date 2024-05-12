@@ -28,13 +28,13 @@ namespace mop.DB
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Brigades> Brigades { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
+        public virtual DbSet<ClientTypes> ClientTypes { get; set; }
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Posts> Posts { get; set; }
+        public virtual DbSet<Requests> Requests { get; set; }
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<ClientTypes> ClientTypes { get; set; }
-        public virtual DbSet<Requests> Requests { get; set; }
     }
 }

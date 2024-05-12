@@ -15,12 +15,12 @@ namespace mop.DB
     public partial class Requests
     {
         public int ID { get; set; }
+        public Nullable<int> EmployeeID { get; set; }
         public string AtributeName { get; set; }
+        public string ItemEditted { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public Nullable<bool> Checking { get; set; }
         public Nullable<bool> Done { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
-        public string ItemEditted { get; set; }
     
         public virtual Employees Employees { get; set; }
     }

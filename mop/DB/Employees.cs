@@ -36,9 +36,9 @@ namespace mop.DB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Brigades> Brigades { get; set; }
+        public virtual Brigades Brigades1 { get; set; }
         public virtual Education Education { get; set; }
         public virtual Posts Posts { get; set; }
-        public virtual Brigades Brigades1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Requests> Requests { get; set; }
     }

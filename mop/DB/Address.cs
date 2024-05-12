@@ -16,8 +16,8 @@ namespace mop.DB
     {
         public int ID { get; set; }
         public string Street { get; set; }
-        public Nullable<int> HouseNumber { get; set; }
-        public Nullable<int> RoomNumber { get; set; }
+        public string HouseNumber { get; set; }
+        public string RoomNumber { get; set; }
         public Nullable<int> ClientID { get; set; }
     
         public virtual Clients Clients { get; set; }
