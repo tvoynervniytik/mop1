@@ -126,7 +126,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Orientation="Horizontal" Height="80">
+            <!--<StackPanel Orientation="Horizontal" Height="80">
                 <Border CornerRadius="40"
                 Width="80">
                     <Border.Background>
@@ -187,7 +187,8 @@
                     </Border>
                 </StackPanel>
 
-            </StackPanel>
+            </StackPanel>-->
+     
         </StackPanel>
 
 
