@@ -14,24 +14,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace mop.Pages.addingPages
+namespace mop.Pages.editingPages
 {
     /// <summary>
     /// Логика взаимодействия для AddOrderPage.xaml
     /// </summary>
-    public partial class AddOrderPage : Page
+    public partial class EditOrderPage : Page
     {
         public static List<Clients> clients { get; set; }
         public static List<Brigades> brigades { get; set; }
         public static List<Services> services { get; set; }
         private Services serv;
-
-        public AddOrderPage()
+        private Orders ordr;
+        public EditOrderPage(Orders order)
         {
             InitializeComponent();
+            ordr = order;
             clients = new List<Clients>(DBConnection.mop.Clients.ToList());
             brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
             services = new List<Services>(DBConnection.mop.Services.ToList());
+            squareTb.Text = order.Square.ToString();
+            dateDp.SelectedDate = order.Date;
+            priceTb.Text = (order.Price).ToString();
             this.DataContext = this;
         }
 
@@ -43,32 +47,35 @@ namespace mop.Pages.addingPages
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             Orders order = new Orders();
-            if (clients == null || brigades == null || services == null ||
-                priceTb.Text == "" || squareTb.Text == "" || dateDp.SelectedDate == null)
+            if (squareTb.Text == "" || dateDp.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все данные!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                var client = clientsCb.SelectedItem as Clients;
-                var brigade = brigadesCb.SelectedItem as Brigades;
-                var service = servicesCb.SelectedItem as Services;
-                order.ClientID = client.ID;
-                order.BrigadeID = brigade.ID;
-                order.ServicesID = service.ID;
-                order.Price = int.Parse(priceTb.Text.Trim());
-                order.Square = int.Parse(squareTb.Text.Trim());
-                if (dateDp.SelectedDate < DateTime.Now)
+                if (clientsCb.SelectedItem != null)
                 {
-                    MessageBox.Show("Дата не раньше и не сегодня!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    var client = clientsCb.SelectedItem as Clients;
+                    ordr.ClientID = client.ID;
                 }
-                else { 
-                order.Date = dateDp.SelectedDate;
-                DBConnection.mop.Orders.Add(order);
+                if (brigadesCb.SelectedItem != null)
+                {
+                    var brigade = brigadesCb.SelectedItem as Brigades;
+                    ordr.BrigadeID = brigade.ID;
+                }
+                if (servicesCb.SelectedItem != null)
+                {
+                    var service = servicesCb.SelectedItem as Services;
+                    ordr.ServicesID = service.ID;
+                }
+                if (priceTb.Text != "")
+                    ordr.Price = int.Parse(priceTb.Text.Trim());
+                ordr.Square = int.Parse(squareTb.Text.Trim());
+                ordr.Date = dateDp.SelectedDate;
                 DBConnection.mop.SaveChanges();
 
                 MessageBox.Show("Данные сохранены!");
-                NavigationService.Navigate(new OrdersPage());}
+                NavigationService.Navigate(new OrdersPage());
             }
         }
 

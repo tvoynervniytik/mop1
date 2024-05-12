@@ -26,6 +26,21 @@
             </Button.Foreground>
         </Button>
 
+        <Image Source="/Images/Vector.png"
+               Width="800"
+                   Margin="1269,0,-149,306"/>
+        <Image Source="/Images/Vector.png"
+               Width="800"
+                   Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="объекты" 
            FontSize="70" 
@@ -104,6 +119,8 @@
                                         <StackPanel>
                                             <TextBlock Text="{Binding Clients.ID}" Foreground="#B3C9D5"/>
                                             <TextBlock Text="{Binding Clients.Name}" Foreground="#B3C9D5"/>
+                                            <TextBlock Text="{Binding Clients.Surname}" Foreground="#B3C9D5"/>
+                                            <TextBlock Text="{Binding Clients.Patronymic}" Foreground="#B3C9D5"/>
                                             
                                         </StackPanel>
                                         </DataTemplate>
@@ -114,22 +131,67 @@
                 </ListView.View>
             </ListView>
 
+            <StackPanel Orientation="Horizontal">
+                <Border CornerRadius="40"
+                    Width="80">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Content="+"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="80"
+                        ToolTip="добавление"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="addBtn" Click="addBtn_Click" HorizontalAlignment="Center" Width="80"/>
+                </Border>
+                <Border CornerRadius="40"
+                    Width="80">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Content="×"
+                            FontSize="40"
+                            FontWeight="Bold"
+                            Height="80"
+                            ToolTip="удаление"
+                            Foreground="White"
+                            Background="Transparent"
+                            BorderThickness="0" 
+                            x:Name="delBtn" Click="delBtn_Click" HorizontalAlignment="Left" Width="80"/>
+                </Border>
+                <Border CornerRadius="40"
+                Width="80">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Content="⋮"
+                        FontSize="40"
+                        FontWeight="Bold"
+                        Height="80"
+                        ToolTip="изменение"
+                        Foreground="White"
+                        Background="Transparent"
+                        BorderThickness="0" 
+                        x:Name="editBtn" Click="editBtn_Click"/>
+                </Border>
+            </StackPanel>
+
         </StackPanel>
-        <Image Source="/Images/Vector.png"
-               Width="800"
-                   Margin="1269,0,-149,306"/>
-        <Image Source="/Images/Vector.png"
-               Width="800"
-                   Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
 
     </Grid>
 </Page>

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using mop.Pages.editingPages;
 
 namespace mop.Pages
 {
@@ -51,12 +52,15 @@ namespace mop.Pages
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new EditOrderPage(ordersLv.SelectedItem as Orders));
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var a = ordersLv.SelectedItem as Orders;
+            DBConnection.mop.Orders.Remove(a);
+            DBConnection.mop.SaveChanges();
+            Refresh();
         }
     }
 }
