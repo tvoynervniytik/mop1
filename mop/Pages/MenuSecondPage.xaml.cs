@@ -38,6 +38,10 @@ namespace mop.Pages
             {
                 MngStP.Visibility = Visibility.Hidden;
             }
+            if (AuthorizationFunc.loggedUser.PostID == 4) //admin
+            {
+                profileBr.Visibility = Visibility.Hidden;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

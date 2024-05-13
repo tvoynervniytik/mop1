@@ -26,12 +26,12 @@ namespace mop.Pages
         public EmployeesPage()
         {
             InitializeComponent();
-            employees = new List<Employees>(DBConnection.mop.Employees.ToList());
+            employees = new List<Employees>(DBConnection.mop.Employees.Where(i => i.PostID != 4).ToList());
             this.DataContext = this;
         }
         public void Refresh()
         {
-            employeesLv.ItemsSource = new List<Employees>(DBConnection.mop.Employees.ToList());
+            employeesLv.ItemsSource = new List<Employees>(DBConnection.mop.Employees.Where(i=> i.PostID != 4).ToList());
         }
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {

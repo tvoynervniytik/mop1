@@ -37,10 +37,8 @@ namespace mop.Pages
 
         private void OrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (AuthorizationFunc.loggedUser.PostID == 2)
-            {
                 NavigationService.Navigate(new OrdersPage());
-            }
+            
         }
 
         private void InfBtn_Click(object sender, RoutedEventArgs e)
