@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages.addingPages"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1980"
+      d:DesignHeight="900" d:DesignWidth="1450"
       Title="AddOrderPage">
 
     <Grid Background="White">
@@ -26,13 +26,11 @@
         <Button Content="← назад"
                 FontSize="34"
                 FontWeight="Bold"
-                Width="200"
+                Width="200" Height="100"
                 Background="Transparent"
                 BorderThickness="0" 
                 x:Name="BackBtn" 
-                Click="BackBtn_Click"
-                Grid.ColumnSpan="2"
-                Grid.RowSpan="2">
+                Click="BackBtn_Click">
             <Button.Foreground>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -61,7 +59,7 @@
             </Image.RenderTransform>
         </Image>
         <TextBlock Text="оформить заказ"
-               FontSize="35" 
+               FontSize="55" 
                FontWeight="Bold"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
@@ -77,7 +75,7 @@
         </TextBlock>
 
         <TextBlock Text="клиент" 
-                    FontSize="25"
+                    FontSize="35"
                     FontWeight="Bold"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center" 
@@ -93,8 +91,8 @@
         </TextBlock>
         <ComboBox Grid.RowSpan="2" Grid.ColumnSpan="2" 
               Grid.Row="1" Grid.Column="1"
-              x:Name="clientsCb"
-              Width="250" Height="40" FontWeight="Bold"
+              x:Name="clientsCb" FontSize="30"
+              Width="350" Height="60" FontWeight="Bold"
               ItemsSource="{Binding clients}">
             <ComboBox.Foreground>
                 <LinearGradientBrush>
@@ -120,7 +118,7 @@
         </ComboBox>
 
         <TextBlock Text="бригада" 
-                    FontSize="25"
+                    FontSize="35"
                     FontWeight="Bold"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center" 
@@ -136,8 +134,8 @@
         </TextBlock>
         <ComboBox Grid.RowSpan="1" Grid.ColumnSpan="2" 
                   Grid.Row="2" Grid.Column="1"
-                  x:Name="brigadesCb"
-                  Width="250" Height="40" FontWeight="Bold"
+                  x:Name="brigadesCb" FontSize="30"
+                  Width="350" Height="60" FontWeight="Bold"
                   ItemsSource="{Binding brigades}">
             <ComboBox.Foreground>
                 <LinearGradientBrush>
@@ -154,7 +152,7 @@
         </ComboBox>
 
         <TextBlock Text="услуга" 
-                    FontSize="25"
+                    FontSize="35"
                     FontWeight="Bold"
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center" 
@@ -170,8 +168,8 @@
         </TextBlock>
         <ComboBox Grid.RowSpan="2" Grid.ColumnSpan="2" 
               Grid.Row="2" Grid.Column="1"
-              x:Name="servicesCb"
-              Width="250" Height="40" FontWeight="Bold"
+              x:Name="servicesCb" FontSize="30"
+              Width="350" Height="60" FontWeight="Bold"
               ItemsSource="{Binding services}" SelectionChanged="servicesCb_SelectionChanged">
             <ComboBox.Foreground>
                 <LinearGradientBrush>
@@ -189,7 +187,7 @@
 
         <TextBlock Text="цена" 
                TextWrapping="Wrap"
-               FontSize="25" 
+               FontSize="35" 
                FontWeight="Bold"
                HorizontalAlignment="Center" 
                VerticalAlignment="Center" 
@@ -207,7 +205,7 @@
                 CornerRadius="26"
                 Grid.RowSpan="1" Grid.ColumnSpan="2" 
                 Grid.Row="3" Grid.Column="1"
-                Height="40" Width="250">
+                Height="60" Width="250">
             <Border.BorderBrush>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -216,8 +214,8 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <TextBox Background="Transparent"
-                 FontSize="25"
-                 Height="40" Text="{Binding Price}"
+                 FontSize="35"
+                 Height="50" Text="{Binding Price}"
                  BorderThickness="0"
                  Padding="15 0 0 0"
                  x:Name="priceTb">
@@ -233,12 +231,12 @@
         </Border>
         
         <TextBlock Text="площадь/кол-во" 
-              FontSize="25"
-               FontWeight="Bold"
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Center" 
-               Grid.RowSpan="2" Grid.ColumnSpan="2" 
-               Grid.Row="3">
+                   FontSize="35"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                   Grid.Row="3">
             <TextBlock.Foreground>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -248,10 +246,10 @@
             </TextBlock.Foreground>
         </TextBlock>
         <Border BorderThickness="4"
-                CornerRadius="26"
+                CornerRadius="26" 
                 Grid.RowSpan="2" Grid.ColumnSpan="2" 
                 Grid.Row="3" Grid.Column="1"
-                Height="37" Width="250">
+                Height="60" Width="250">
             <Border.BorderBrush>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -260,11 +258,11 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <TextBox Background="Transparent"
-                 FontSize="25"
-                 Height="40"
-                 BorderThickness="0"
-                 Padding="15 0 0 0"
-                 x:Name="squareTb" TextChanged="squareTb_TextChanged">
+                    FontSize="35"
+                    Height="50"
+                    BorderThickness="0"
+                    Padding="15 0 0 0"
+                    x:Name="squareTb" TextChanged="squareTb_TextChanged">
 
                 <TextBlock.Foreground>
                     <LinearGradientBrush>
@@ -277,7 +275,7 @@
         </Border>
         
         <TextBlock Text="дата" 
-      FontSize="25"
+      FontSize="35"
        FontWeight="Bold"
        HorizontalAlignment="Center" 
        VerticalAlignment="Center" 
@@ -292,8 +290,8 @@
             </TextBlock.Foreground>
         </TextBlock>
         <DatePicker x:Name="dateDp"
-                    Width="200"
-                    Height="40"
+                    Width="250"
+                    Height="60" FontSize="35"
                     Grid.RowSpan="1" 
                     Grid.ColumnSpan="2" 
                     Grid.Column="1"
@@ -307,7 +305,7 @@
             </DatePicker.Foreground>
         </DatePicker>
         
-        <Border CornerRadius="26" Height="35" Width="150"
+        <Border CornerRadius="26" Height="60" Width="250"
             Grid.Column="1"
             Grid.Row="8">
             <Border.Background>
@@ -318,12 +316,13 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Button Content="добавить"
-                FontSize="25"
+                FontSize="40"
                 FontWeight="Bold"
-                Foreground="White"
+                Foreground="White" Width="200"
                 Background="Transparent"
                 BorderThickness="0" 
-                x:Name="SaveBtn" Click="SaveBtn_Click" Height="35" VerticalAlignment="Top"/>
+                x:Name="SaveBtn" Click="SaveBtn_Click" Height="60" 
+                    VerticalAlignment="Top"/>
         </Border>
 
     </Grid>

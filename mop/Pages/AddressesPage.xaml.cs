@@ -41,7 +41,11 @@ namespace mop.Pages
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddressesEditPage(addressesLv.SelectedItem as Address));
+            var del = addressesLv.SelectedItem as Address;
+            if (del != null)
+            {
+                NavigationService.Navigate(new AddressesEditPage(addressesLv.SelectedItem as Address));
+            }
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)

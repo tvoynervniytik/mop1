@@ -131,14 +131,26 @@
     <Compile Include="Pages\addingPages\AddressesAddPage.xaml.cs">
       <DependentUpon>AddressesAddPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\addingPages\ClientsAddPage.xaml.cs">
+      <DependentUpon>ClientsAddPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\addingPages\ServicesAddPage.xaml.cs">
+      <DependentUpon>ServicesAddPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\editingPages\AddressesEditPage.xaml.cs">
       <DependentUpon>AddressesEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editingPages\ClientsEditPage.xaml.cs">
+      <DependentUpon>ClientsEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\editingPages\EditOrderPage.xaml.cs">
       <DependentUpon>EditOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditBrigade.xaml.cs">
       <DependentUpon>EditBrigade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editingPages\ServicesEditPage.xaml.cs">
+      <DependentUpon>ServicesEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -177,6 +189,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\addingPages\ClientsAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\addingPages\ServicesAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddressesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -197,11 +217,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\editingPages\ClientsEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\editingPages\EditOrderPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\EditBrigade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editingPages\ServicesEditPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

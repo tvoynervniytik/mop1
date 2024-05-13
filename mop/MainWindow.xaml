@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mop"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Icon="/Images/logo.png"
-        Title="mop" Height="720" Width="1280">
+        Title="mop" Height="900" Width="1450">
     <Grid>
         <Frame x:Name="navFr" NavigationUIVisibility="Hidden"/>
     </Grid>

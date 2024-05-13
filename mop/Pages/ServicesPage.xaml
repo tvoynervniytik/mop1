@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="900" d:DesignWidth="1450"
       Title="ServicesPage">
 
     <Grid Background="White">
@@ -27,10 +27,10 @@
         </Button>
         <Image Source="/Images/Vector.png"
                    Width="800"
-                       Margin="1269,0,-149,306"/>
+                       Margin="889,0,-239,306"/>
             <Image Source="/Images/Vector.png"
                    Width="800"
-                       Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
+                       Margin="-240,313,890,-7" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -54,7 +54,7 @@
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
             </TextBlock>
-            <ListView x:Name="employeesLv" 
+            <ListView x:Name="servicesLv" 
              Width="1200" Height="400"
              FontSize="20"
              ItemsSource="{Binding services}"

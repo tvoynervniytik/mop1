@@ -23,7 +23,7 @@ namespace mop.Pages.addingPages
     {
         public static List<Clients> clients { get; set; }
         public static List<Brigades> brigades { get; set; }
-        public static List<Services> services { get; set; }
+        public static List<Services > services { get; set; }
         private Services serv;
 
         public AddOrderPage()

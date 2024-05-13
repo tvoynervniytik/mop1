@@ -1,4 +1,6 @@
 ﻿using mop.DB;
+using mop.Pages.addingPages;
+using mop.Pages.editingPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,22 +33,35 @@ namespace mop.Pages
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new MenuSecondPage());
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ServicesAddPage());
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (servicesLv.SelectedItem as Services != null)
+            {
+                NavigationService.Navigate(new ServicesEditPage(servicesLv.SelectedItem as Services));
+            }
+        }
+        private void Refresh()
+        {
+            servicesLv.ItemsSource = new List<Services>(DBConnection.mop.Services.ToList());
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (servicesLv.SelectedItem as Services != null)
+            {
+                var a = servicesLv.SelectedItem as Services;
+                DBConnection.mop.Services.Remove(a);
+                DBConnection.mop.SaveChanges();
+                Refresh();
+            }
         }
     }
 }
