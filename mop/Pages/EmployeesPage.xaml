@@ -25,7 +25,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-
         <Button Content="← назад"
                 FontSize="34"
                 FontWeight="Bold"

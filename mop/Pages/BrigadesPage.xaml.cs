@@ -56,8 +56,8 @@ namespace mop.Pages
             if (br == null) { }
             else
             {
-                EditBrigade editBrigade = new EditBrigade(br);
-                editBrigade.Show();
+                EditBrigadeWindow editBrigadeWindow = new EditBrigadeWindow(br);
+                editBrigadeWindow.Show();                
             }
         }
 

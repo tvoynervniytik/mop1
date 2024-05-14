@@ -27,11 +27,11 @@
         </Button>
 
         <Image Source="/Images/Vector.png"
-               Width="800"
-                   Margin="856,0,-206,306"/>
+                   Width="800"
+                       Margin="889,0,-239,306"/>
         <Image Source="/Images/Vector.png"
-               Width="800"
-                   Margin="-214,323,864,-17" RenderTransformOrigin="0.5,0.5">
+                   Width="800"
+                       Margin="-240,313,890,-7" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -41,7 +41,6 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="клиенты" 
            FontSize="70" 

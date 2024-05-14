@@ -10,7 +10,6 @@
 
         <Grid Background="White">
 
-
         <Image Source="/Images/Vector.png"
                    Width="800"
                        Margin="889,0,-239,306"/>

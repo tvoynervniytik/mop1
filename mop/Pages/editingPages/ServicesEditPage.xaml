@@ -47,7 +47,7 @@
            VerticalAlignment="Bottom"
            HorizontalAlignment="Left"
            RenderTransformOrigin="0.5,0.5" 
-           Grid.RowSpan="4" Grid.Row="2">
+           Grid.RowSpan="4" Grid.Row="1">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
