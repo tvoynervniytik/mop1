@@ -1,13 +1,16 @@
-﻿<Window x:Class="mop.Windows.AddBrigade"
+﻿<Window x:Class="mop.Windows.EditBrigade"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:mop.Windows"
-        mc:Ignorable="d"
-        Title="AddBrigade" Height="450" Width="800">
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="EditBrigade" Height="600" Width="900">
+
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -26,7 +29,7 @@
            VerticalAlignment="Bottom"
            HorizontalAlignment="Left"
            RenderTransformOrigin="0.5,0.5" 
-           Grid.RowSpan="4" Grid.Row="0">
+           Grid.RowSpan="4" Grid.Row="1">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -43,7 +46,7 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Grid.RowSpan="2" Grid.ColumnSpan="2" 
-            Grid.Row="1">
+            Grid.Row="3">
             <TextBlock.Foreground>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -52,7 +55,7 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <TextBlock Text="добавить бригаду"
+        <TextBlock Text="изменить бригаду"
                FontSize="35" TextWrapping="Wrap"
                FontWeight="Bold" Width="400" TextAlignment="Center"
                VerticalAlignment="Center"
@@ -73,7 +76,7 @@
                   Grid.Column="1" 
                   Grid.ColumnSpan="2"
                   Grid.RowSpan="2" 
-                  Grid.Row="1"
+                  Grid.Row="3"
                   ItemsSource="{Binding employees}">
             <ComboBox.Foreground>
                 <LinearGradientBrush>
@@ -88,13 +91,74 @@
                         <TextBlock Text="{Binding Surname}"/>
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text="{Binding Patronymic}"/>
-                    </StackPanel> </DataTemplate>
+                    </StackPanel>
+                </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        
+
+        <ListView x:Name="brigadesLv"
+                  Grid.Column="0" 
+                  Width="450" Height="250"
+                  Grid.ColumnSpan="3"
+                  Grid.RowSpan="3" 
+                  Grid.Row="1"
+                  FontSize="20"
+                  ItemsSource="{Binding employees}"
+              >
+            <ListView.Foreground>
+                <LinearGradientBrush>
+                    <GradientStop Color="#C0D5B3" Offset="0"/>
+                    <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                    <GradientStop Color="#A3AEE6" Offset="1"/>
+                </LinearGradientBrush>
+            </ListView.Foreground>
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Id бригады" 
+                                          Width="120">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style  TargetType="GridViewColumnHeader">
+                                    <Setter Property="Foreground" Value="#B8CEC5" />
+                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Brigades.ID}" Foreground="#B8CEC5"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="ФИО сотрудников" 
+                                          Width="260">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style  TargetType="GridViewColumnHeader">
+                                    <Setter Property="Foreground" Value="#B8CEC5" />
+                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Surname}" Foreground="#B8CEC5"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="{Binding Name}" Foreground="#B8CEC5"/>
+                                        <TextBlock Text=" "/>
+                                        <TextBlock Text="{Binding Patronymic}" Foreground="#B8CEC5"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <Border CornerRadius="26" Height="35" Width="150"
             Grid.Column="1"
-            Grid.Row="2">
+            Grid.Row="4">
             <Border.Background>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>

@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Functions;
 using mop.Windows;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace mop.Pages
         {
             InitializeComponent();
             employees = new List<Employees>(DBConnection.mop.Employees.Where(i => i.PostID != 4).ToList());
+           
             this.DataContext = this;
         }
         public void Refresh()

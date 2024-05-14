@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Functions;
 using mop.Windows;
 using System;
 using System.Collections.Generic;
@@ -23,15 +24,18 @@ namespace mop.Pages
     public partial class BrigadesPage : Page
     {
         public static List<Employees> employees {  get; set; }
+        public static List<Brigades> brigades {  get; set; }
         public BrigadesPage()
         {
             InitializeComponent();
-            employees = new List<Employees>(DBConnection.mop.Employees.Where(i => i.PostID == 1).ToList());
+            employees = new List<Employees>(DBConnection.mop.Employees.Where(i => i.PostID == 1 & i.BrigadeID != null).ToList());
+            brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
+            if (AuthorizationFunc.loggedUser.PostID == 2) st.Visibility = Visibility.Hidden;
             this.DataContext = this;
         }
         public void Refresh()
         {
-            brigadesLv.ItemsSource = DBConnection.mop.Employees.ToList();
+            brigadesLv.ItemsSource = DBConnection.mop.Brigades.ToList();
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
@@ -48,12 +52,12 @@ namespace mop.Pages
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
-            var a = brigadesLv.SelectedItem as Employees;
-            if (a == null)
-                MessageBox.Show("Заполните все данные!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            var br = brigadesLv.SelectedItem as Brigades;
+            if (br == null) { }
             else
             {
-
+                EditBrigade editBrigade = new EditBrigade(br);
+                editBrigade.Show();
             }
         }
 

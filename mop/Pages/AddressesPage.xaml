@@ -131,7 +131,7 @@
                 </ListView.View>
             </ListView>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" x:Name="st">
                 <Border CornerRadius="40"
                     Width="80">
                     <Border.Background>

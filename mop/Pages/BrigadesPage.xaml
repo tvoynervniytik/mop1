@@ -5,17 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages"
       mc:Ignorable="d" 
-     d:DesignHeight="1080" d:DesignWidth="1920"
+     d:DesignHeight="900" d:DesignWidth="1450"
       Title="BrigadesPage">
 
         <Grid Background="White">
 
+
         <Image Source="/Images/Vector.png"
-               Width="800"
-                   Margin="1269,0,-149,306"/>
+                   Width="800"
+                       Margin="889,0,-239,306"/>
         <Image Source="/Images/Vector.png"
-               Width="800"
-                   Margin="-130,353,1250,-47" RenderTransformOrigin="0.5,0.5">
+                   Width="800"
+                       Margin="-240,313,890,-7" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -59,7 +60,7 @@
             <ListView x:Name="brigadesLv" 
                     Width="1000" Height="400"
                     FontSize="20"
-                    ItemsSource="{Binding employees}"
+                    ItemsSource="{Binding brigades}"
               >
                 <ListView.Foreground>
                     <LinearGradientBrush>
@@ -82,7 +83,7 @@
 
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding BrigadeID}" Foreground="#B8CEC5"/>
+                                        <TextBlock Text="{Binding ID}" Foreground="#B8CEC5"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -97,7 +98,7 @@
 
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ID}" Foreground="#B8CEC5"/>
+                                        <TextBlock Text="{Binding HeadID}" Foreground="#B8CEC5"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -112,11 +113,11 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Surname}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text="{Binding Employees.Surname}" Foreground="#B8CEC5"/>
                                             <TextBlock Text=" "/>
-                                            <TextBlock Text="{Binding Name}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text="{Binding Employees.Name}" Foreground="#B8CEC5"/>
                                             <TextBlock Text=" "/>
-                                            <TextBlock Text="{Binding Patronymic}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text="{Binding Employees.Patronymic}" Foreground="#B8CEC5"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
@@ -126,7 +127,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Orientation="Horizontal" Height="80">
+            <StackPanel Orientation="Horizontal" Height="80" x:Name="st">
                 <Border CornerRadius="40"
                 Width="80">
                     <Border.Background>
@@ -163,7 +164,7 @@
                         Foreground="White"
                         Background="Transparent"
                         BorderThickness="0" 
-                        x:Name="editBtn" Click="editBtn_Click" HorizontalAlignment="Left" Width="80"/>
+                        x:Name="editBtn" Click="editBtn_Click"/>
                 </Border>
                 <StackPanel Orientation="Horizontal" Margin="760 0 0 0">
                     <Border CornerRadius="40"

@@ -24,7 +24,7 @@ namespace mop.Windows
         public AddBrigade()
         {
             InitializeComponent();
-            employees = new List<Employees>(DBConnection.mop.Employees.Where(i=>i.PostID==1).ToList());
+            employees = new List<Employees>(DBConnection.mop.Employees.Where(i=>i.PostID ==1 & i.BrigadeID == null).ToList());
             this.DataContext = this;
         }
 
@@ -37,9 +37,11 @@ namespace mop.Windows
                 brigade.HeadID = a.ID;
                 DBConnection.mop.Brigades.Add(brigade);
                 DBConnection.mop.SaveChanges();
+                a.BrigadeID = brigade.ID;
+                DBConnection.mop.SaveChanges();
                 this.Close();
-                EmployeeAddWindow employeeAddWindow = new EmployeeAddWindow();
-                employeeAddWindow.Show();
+                AddEmployeesBrigade addEmployeesBrigade = new AddEmployeesBrigade(brigade);
+                addEmployeesBrigade.Show();
             }
             else MessageBox.Show("Заполните все данные!", "", MessageBoxButton.OK, MessageBoxImage.Error);
         }

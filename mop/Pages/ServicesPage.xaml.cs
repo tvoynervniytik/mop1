@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Functions;
 using mop.Pages.addingPages;
 using mop.Pages.editingPages;
 using System;
@@ -28,6 +29,7 @@ namespace mop.Pages
         {
             InitializeComponent();
             services = new List<Services>(DBConnection.mop.Services.ToList());
+            if (AuthorizationFunc.loggedUser.PostID != 4) st.Visibility = Visibility.Hidden;
             this.DataContext = this;
         }
 

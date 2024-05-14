@@ -161,6 +161,12 @@
     <Compile Include="Windows\AddBrigade.xaml.cs">
       <DependentUpon>AddBrigade.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddEmployeesBrigade.xaml.cs">
+      <DependentUpon>AddEmployeesBrigade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditBrigade.xaml.cs">
+      <DependentUpon>EditBrigade.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EmployeeEditWindow.xaml.cs">
       <DependentUpon>EmployeeEditWindow.xaml</DependentUpon>
     </Compile>
@@ -266,6 +272,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AddBrigade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddEmployeesBrigade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditBrigade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
