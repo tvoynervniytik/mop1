@@ -264,7 +264,7 @@
                     Height="50"
                     BorderThickness="0"
                     Padding="15 0 0 0"
-                    x:Name="squareTb" TextChanged="squareTb_TextChanged">
+                    x:Name="squareTb" TextChanged="squareTb_TextChanged" Margin="0,1,0,0" VerticalAlignment="Top">
 
                 <TextBlock.Foreground>
                     <LinearGradientBrush>

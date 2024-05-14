@@ -36,7 +36,13 @@ namespace mop.Windows
         }
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            var a = emplCb.SelectedItem as Employees;
+            if (a != null)
+            {
+                brigades.HeadID = a.ID;
+                DBConnection.mop.SaveChanges();
+                this.Close();
+            }
         }
 
         private void plusBtn_Click(object sender, RoutedEventArgs e)

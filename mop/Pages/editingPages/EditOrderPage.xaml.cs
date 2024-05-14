@@ -93,7 +93,9 @@ namespace mop.Pages.editingPages
         private void squareTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (serv == null)
-            { }
+            {
+                priceTb.Text = (ordr.Price/ordr.Square * int.Parse(squareTb.Text.Trim())).ToString();
+            }
             else
             {
                 if (squareTb.Text == "")

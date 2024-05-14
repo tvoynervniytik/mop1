@@ -237,7 +237,7 @@
             Foreground="White"
             Background="Transparent"
             BorderThickness="0" 
-            x:Name="addBtn" Click="addBtn_Click" />
+            x:Name="addBtn" Click="addBtn_Click" Height="35" VerticalAlignment="Bottom" />
         </Border>
 
     </Grid>
