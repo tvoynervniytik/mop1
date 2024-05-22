@@ -88,7 +88,7 @@
             </Border.BorderBrush>
             <TextBox Background="Transparent"
                      FontSize="25"
-                     Height="40" Text="фамилия"
+                     Height="40" 
                      BorderThickness="0"
                      Padding="15 0 0 0"
                      x:Name="surnameTb">
@@ -131,7 +131,7 @@
             </Border.BorderBrush>
             <TextBox Background="Transparent"
                      FontSize="25"
-                     Height="40" Text="имя"
+                     Height="40" 
                      BorderThickness="0"
                      Padding="15 0 0 0"
                      x:Name="nameTb">
@@ -174,7 +174,7 @@
             </Border.BorderBrush>
             <TextBox Background="Transparent"
                      FontSize="25"
-                     Height="40" Text="отчество"
+                     Height="40" 
                      BorderThickness="0"
                      Padding="15 0 0 0"
                      x:Name="patronymicTb">

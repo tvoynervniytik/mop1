@@ -44,8 +44,8 @@
         </Image>
         <Button Content="← назад"
                 FontSize="34"
-                FontWeight="Bold"
-                Width="200"
+                FontWeight="Bold" 
+                Width="200" Height="100"
                 Background="Transparent"
                 BorderThickness="0" 
                 x:Name="BackBtn" Click="BackBtn_Click" 

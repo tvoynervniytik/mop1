@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages.addingPages"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1980"
+       d:DesignHeight="900" d:DesignWidth="1450"
       Title="AddOrderPage">
 
     <Grid Background="White">
@@ -59,7 +59,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBlock Text="оформить заказ"
+        <TextBlock Text="изменить заказ"
                FontSize="55" 
                FontWeight="Bold"
                VerticalAlignment="Center"

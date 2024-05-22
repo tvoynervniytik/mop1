@@ -146,9 +146,6 @@
     <Compile Include="Pages\editingPages\EditOrderPage.xaml.cs">
       <DependentUpon>EditOrderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditBrigade.xaml.cs">
-      <DependentUpon>EditBrigade.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\editingPages\ServicesEditPage.xaml.cs">
       <DependentUpon>ServicesEditPage.xaml</DependentUpon>
     </Compile>
@@ -230,10 +227,6 @@
     <Page Include="Pages\editingPages\EditOrderPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\EditBrigade.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\editingPages\ServicesEditPage.xaml">
       <SubType>Designer</SubType>

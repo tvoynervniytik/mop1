@@ -14,6 +14,7 @@
                     FontSize="34"
                     FontWeight="Bold"
                     Width="200"
+                Height="100"
                     Background="Transparent"
                     BorderThickness="0" 
                     x:Name="BackBtn" Click="BackBtn_Click" Margin="65,10,1015,602">
@@ -24,6 +25,7 @@
                     <GradientStop Color="#A3AEE6" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Foreground>
+            
         </Button>
 
         <StackPanel HorizontalAlignment="Center" 
@@ -43,6 +45,7 @@
             </TextBlock>
 
             <Border CornerRadius="26"
+                 
                     Margin="0 10" x:Name="ordBr">
                 <Border.Background>
                     <LinearGradientBrush>
@@ -52,7 +55,7 @@
                     </LinearGradientBrush>
                 </Border.Background>
                 <Button Content="оформление"
-                        FontSize="40"
+                        FontSize="40" 
                         FontWeight="Bold"
                         Height="60"
                         Foreground="White"

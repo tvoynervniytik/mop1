@@ -47,9 +47,12 @@ namespace mop.Pages
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
             var del = employeesLv.SelectedItem as Employees;
-            DBConnection.mop.Employees.Remove(del);
-            DBConnection.mop.SaveChanges();
-            Refresh();
+            if (employeesLv.SelectedItem != null)
+            {
+                DBConnection.mop.Employees.Remove(del);
+                DBConnection.mop.SaveChanges();
+                Refresh();
+            }
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)

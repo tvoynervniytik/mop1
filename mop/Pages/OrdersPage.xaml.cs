@@ -52,15 +52,19 @@ namespace mop.Pages
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (ordersLv.SelectedItem != null)
             NavigationService.Navigate(new EditOrderPage(ordersLv.SelectedItem as Orders));
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
         {
             var a = ordersLv.SelectedItem as Orders;
-            DBConnection.mop.Orders.Remove(a);
-            DBConnection.mop.SaveChanges();
-            Refresh();
+            if (ordersLv.SelectedItem != null)
+            {
+                DBConnection.mop.Orders.Remove(a);
+                DBConnection.mop.SaveChanges();
+                Refresh();
+            }
         }
     }
 }

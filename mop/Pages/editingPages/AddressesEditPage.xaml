@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:mop.Pages.editingPages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+       d:DesignHeight="900" d:DesignWidth="1450"
       Title="AddressesEditPage">
 
     <Grid Background="White">
@@ -27,13 +27,12 @@
         <Button Content="← назад"
                 FontSize="34"
                 FontWeight="Bold"
-                Width="200"
+                Width="200" Height="100"
                 Background="Transparent"
                 BorderThickness="0" 
                 x:Name="BackBtn" 
                 Click="BackBtn_Click"
-                Grid.ColumnSpan="2"
-                Grid.RowSpan="2">
+                Grid.RowSpan="2" Margin="171,-10,112,10">
             <Button.Foreground>
                 <LinearGradientBrush>
                     <GradientStop Color="#C0D5B3" Offset="0"/>
@@ -274,5 +273,5 @@
                 x:Name="SaveBtn" Click="SaveBtn_Click" Height="35" VerticalAlignment="Top"/>
         </Border>
 
-        </Grid>
+    </Grid>
 </Page>

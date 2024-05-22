@@ -11,7 +11,7 @@
     <Grid Background="White">
 
         <Button Content="← назад"
-                    FontSize="34"
+                    FontSize="34" Height="100"
                     FontWeight="Bold"
                     Width="200"
                     Background="Transparent"
