@@ -1,4 +1,5 @@
 ﻿using mop.DB;
+using mop.Questions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace mop.Functions
         private static string login;
         private static string password;
         public static Employees loggedUser;
-
+        public static bool Question = false;
         public static void Authorization(string login, string password)
         {
             if (login == ""|| password == "") 
@@ -36,7 +37,15 @@ namespace mop.Functions
                 }
                 else
                 {
-                    MessageBox.Show($"Здравствуйте, {loggedUser.Name.First()}. {loggedUser.Patronymic.First()}. {loggedUser.Surname}");
+                    if (loggedUser.PostID != 4) 
+                        Question = true;
+                    if (Question == false)
+                    {
+                        QW qW = new QW();
+                        qW.Show();
+                    }
+                    if (Question)
+                        MessageBox.Show($"Здравствуйте, {loggedUser.Name.First()}. {loggedUser.Patronymic.First()}. {loggedUser.Surname}");
                 }
             }
         }

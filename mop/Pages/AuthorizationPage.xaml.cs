@@ -35,7 +35,7 @@ namespace mop.Pages
 
             AuthorizationFunc.Authorization(login, password);
 
-            if (AuthorizationFunc.loggedUser != null)
+            if (AuthorizationFunc.loggedUser != null & AuthorizationFunc.Question)
             {
                 if (AuthorizationFunc.loggedUser.PostID == 3)
                     NavigationService.Navigate(new MenuSecondPage());

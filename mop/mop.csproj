@@ -155,6 +155,9 @@
     <Compile Include="Pages\RequestsPage.xaml.cs">
       <DependentUpon>RequestsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Questions\QW.xaml.cs">
+      <DependentUpon>QW.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddBrigade.xaml.cs">
       <DependentUpon>AddBrigade.xaml</DependentUpon>
     </Compile>
@@ -261,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ServicesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Questions\QW.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
