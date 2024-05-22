@@ -53,29 +53,33 @@ namespace mop.Pages.editingPages
             }
             else
             {
-                if (clientsCb.SelectedItem != null)
+                try
                 {
-                    var client = clientsCb.SelectedItem as Clients;
-                    ordr.ClientID = client.ID;
-                }
-                if (brigadesCb.SelectedItem != null)
-                {
-                    var brigade = brigadesCb.SelectedItem as Brigades;
-                    ordr.BrigadeID = brigade.ID;
-                }
-                if (servicesCb.SelectedItem != null)
-                {
-                    var service = servicesCb.SelectedItem as Services;
-                    ordr.ServicesID = service.ID;
-                }
-                if (priceTb.Text != "")
-                    ordr.Price = int.Parse(priceTb.Text.Trim());
-                ordr.Square = int.Parse(squareTb.Text.Trim());
-                ordr.Date = dateDp.SelectedDate;
-                DBConnection.mop.SaveChanges();
+                    if (clientsCb.SelectedItem != null)
+                    {
+                        var client = clientsCb.SelectedItem as Clients;
+                        ordr.ClientID = client.ID;
+                    }
+                    if (brigadesCb.SelectedItem != null)
+                    {
+                        var brigade = brigadesCb.SelectedItem as Brigades;
+                        ordr.BrigadeID = brigade.ID;
+                    }
+                    if (servicesCb.SelectedItem != null)
+                    {
+                        var service = servicesCb.SelectedItem as Services;
+                        ordr.ServicesID = service.ID;
+                    }
+                    if (priceTb.Text != "")
+                        ordr.Price = int.Parse(priceTb.Text.Trim());
+                    ordr.Square = int.Parse(squareTb.Text.Trim());
+                    ordr.Date = dateDp.SelectedDate;
+                    DBConnection.mop.SaveChanges();
 
-                MessageBox.Show("Данные сохранены!");
-                NavigationService.Navigate(new OrdersPage());
+                    MessageBox.Show("Данные сохранены!");
+                    NavigationService.Navigate(new OrdersPage());
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message);  }
             }
         }
 
@@ -92,17 +96,21 @@ namespace mop.Pages.editingPages
 
         private void squareTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (serv == null)
+            try
             {
-                priceTb.Text = (ordr.Price/ordr.Square * int.Parse(squareTb.Text.Trim())).ToString();
-            }
-            else
-            {
-                if (squareTb.Text == "")
-                { priceTb.Text = (serv.Price).ToString(); }
+                if (serv == null)
+                {
+                    priceTb.Text = (ordr.Price / ordr.Square * int.Parse(squareTb.Text.Trim())).ToString();
+                }
                 else
-                priceTb.Text = (serv.Price * int.Parse(squareTb.Text.Trim())).ToString();
+                {
+                    if (squareTb.Text == "")
+                    { priceTb.Text = (serv.Price).ToString(); }
+                    else
+                        priceTb.Text = (serv.Price * int.Parse(squareTb.Text.Trim())).ToString();
+                }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

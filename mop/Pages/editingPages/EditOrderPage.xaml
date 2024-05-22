@@ -210,7 +210,7 @@
             </Border.BorderBrush>
             <TextBox Background="Transparent"
                  FontSize="35"
-                 Height="50" 
+                 Height="50" IsEnabled="False"
                  BorderThickness="0"
                  Padding="15 0 0 0"
                  x:Name="priceTb">

@@ -24,9 +24,26 @@ namespace mop.Pages
     public partial class RequestsPage : Page
     {
         public static List<Requests> requests { get; set; }
+        public partial class RequestsLv
+        {
+            public int ID { get; set; }
+            public Nullable<int> EmployeeID { get; set; }
+            public string EmplF { get; set; }
+            public string EmplN { get; set; }
+            public string EmplP { get; set; }
+            public string AtributeName { get; set; }
+            public string ItemEditted { get; set; }
+            public Nullable<System.DateTime> Date { get; set; }
+            public string Checking { get; set; }
+            public string Done { get; set; }
+
+            public virtual Employees Employees { get; set; }
+        }
+        public static List<RequestsLv> requests1 { get; set; }
         public RequestsPage()
         {
             InitializeComponent();
+            var ItemsRequestlv = new List<RequestsLv>();
             if (AuthorizationFunc.loggedUser.PostID == 3 || AuthorizationFunc.loggedUser.PostID == 4) //meneger employees
                 requests = new List<Requests>(DBConnection.mop.Requests.ToList());
             else
@@ -35,6 +52,26 @@ namespace mop.Pages
                     Where(i => i.EmployeeID == AuthorizationFunc.loggedUser.ID).ToList());
                 mngSp.Visibility = Visibility.Hidden;
             }
+            foreach (var request in requests)
+            {
+                RequestsLv requestsLv = new RequestsLv();
+                requestsLv.ID = request.ID;
+                requestsLv.EmplF = request.Employees.Surname;
+                requestsLv.EmplN = request.Employees.Name;
+                requestsLv.EmplP = request.Employees.Patronymic;
+                requestsLv.AtributeName = request.AtributeName;
+                requestsLv.ItemEditted = request.ItemEditted;
+                requestsLv.Date = request.Date;
+                requestsLv.EmployeeID = request.EmployeeID;
+                if (request.Done == true)
+                    requestsLv.Done = "изменено";
+                else requestsLv.Done = "не изменено";
+                if (request.Checking == true)
+                    requestsLv.Checking = "проверено";
+                else requestsLv.Checking = "не проверено";
+                ItemsRequestlv.Add(requestsLv);
+            }
+            requestsLv.ItemsSource =ItemsRequestlv.ToList();
             this.DataContext = this;
         }
 
@@ -48,7 +85,7 @@ namespace mop.Pages
         public void Refresh()
         {
             var itemssource = new List<Requests>(DBConnection.mop.Requests.ToList());
-
+            var ItemsRequestlv = new List<RequestsLv>();
             //условие
             if (surnameTb.Text == "") { }
             else
@@ -68,8 +105,26 @@ namespace mop.Pages
                     itemssource = itemssource.Where(i => i.Done == true).ToList();
                 else
                     itemssource = itemssource.Where(i => i.Done == false).ToList();
-
-            requestsLv.ItemsSource = itemssource;
+            foreach (var request in itemssource)
+            {
+                RequestsLv requestsLv = new RequestsLv();
+                requestsLv.ID = request.ID;
+                requestsLv.EmplF = request.Employees.Surname;
+                requestsLv.EmplN = request.Employees.Name;
+                requestsLv.EmplP = request.Employees.Patronymic;
+                requestsLv.AtributeName = request.AtributeName;
+                requestsLv.ItemEditted = request.ItemEditted;
+                requestsLv.Date = request.Date;
+                requestsLv.EmployeeID = request.EmployeeID;
+                if (request.Done == true)
+                    requestsLv.Done = "изменено";
+                else requestsLv.Done = "не изменено";
+                if (request.Checking == true)
+                    requestsLv.Checking = "проверено";
+                else requestsLv.Checking = "не проверено";
+                ItemsRequestlv.Add(requestsLv);
+            }
+            requestsLv.ItemsSource = ItemsRequestlv;
          }
 
         private void checkedBtn_Click(object sender, RoutedEventArgs e)
@@ -85,19 +140,19 @@ namespace mop.Pages
         {
             if (AuthorizationFunc.loggedUser.PostID == 3)
             { 
-                var a = requestsLv.SelectedItem as Requests;
+                var a = requestsLv.SelectedItem as RequestsLv;
                 if (a != null)
                 {
-                    if (a.Checking == true)
+                    if (a.Checking == "проверено")
                     {
-                        if (a.Done == true) MessageBox.Show
+                        if (a.Done == "изменено") MessageBox.Show
                             ("Запрос уже исполнен!", "done error", MessageBoxButton.OK, MessageBoxImage.Error);
                         else
                         {
-                            EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(a);
+                            var b = DBConnection.mop.Requests.First(i=>i.ID == a.ID);
+                            EmployeeEditWindow employeeEditWindow = new EmployeeEditWindow(b);
                             employeeEditWindow.Show();
                         }
-
                     }
                     else MessageBox.Show
                             ("Проверка данного запроса не проведена, проверьте документы!", "checking error", MessageBoxButton.OK, MessageBoxImage.Error);

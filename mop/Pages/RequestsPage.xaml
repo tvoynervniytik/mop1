@@ -20,8 +20,8 @@
             </Image.RenderTransform>
         </Image>
         <Button Content="← назад" FontSize="34" FontWeight="Bold" 
-                Width="200" ToolTip="возвращение назад" Height="100"
-               Style="{StaticResource back}" BorderThickness="0" x:Name="BackBtn" Click="BackBtn_Click" Margin="65,10,1015,602">
+                Width="200" ToolTip="возвращение назад" Height="100" Style="{StaticResource back}"
+                BorderThickness="0" x:Name="BackBtn" Click="BackBtn_Click" Margin="65,10,1015,602">
         
         </Button>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -198,9 +198,9 @@
                                             <TextBlock Text="{Binding EmployeeID}" Foreground="#B8CEC5"/>
                                             <TextBlock Text=". " Foreground="#B8CEC5"/>
                                             <StackPanel>
-                                                <TextBlock Text="{Binding Employees.Surname}" Foreground="#B8CEC5"/>
-                                                <TextBlock Text="{Binding Employees.Name}" Foreground="#B8CEC5"/>
-                                                <TextBlock Text="{Binding Employees.Patronymic}" Foreground="#B8CEC5"/>
+                                                <TextBlock Text="{Binding EmplF}" Foreground="#B8CEC5"/>
+                                                <TextBlock Text="{Binding EmplN}" Foreground="#B8CEC5"/>
+                                                <TextBlock Text="{Binding EmplP}" Foreground="#B8CEC5"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>
@@ -220,7 +220,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="изм. значение" Width="230">
+                            <GridViewColumn Header="изм. значение" Width="220">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#B3C9D5" />
@@ -229,7 +229,8 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ItemEditted}" Foreground="#B3C9D5"/>
+                                        <TextBlock Text="{Binding ItemEditted}"
+                                                   Foreground="#B3C9D5"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -259,7 +260,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="изменено" Width="200" x:Name="doneAt">
+                            <GridViewColumn Header="изменено" Width="190" x:Name="doneAt">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#AABADD" />

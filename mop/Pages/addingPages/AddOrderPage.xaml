@@ -206,7 +206,7 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <TextBox Background="Transparent"
-                 FontSize="35"
+                 FontSize="35" IsEnabled="False"
                  Height="50" Text="{Binding Price}"
                  BorderThickness="0"
                  Padding="15 0 0 0"

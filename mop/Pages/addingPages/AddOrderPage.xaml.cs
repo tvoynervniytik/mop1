@@ -56,19 +56,28 @@ namespace mop.Pages.addingPages
                 order.ClientID = client.ID;
                 order.BrigadeID = brigade.ID;
                 order.ServicesID = service.ID;
-                order.Price = int.Parse(priceTb.Text.Trim());
-                order.Square = int.Parse(squareTb.Text.Trim());
-                if (dateDp.SelectedDate < DateTime.Now)
+                try
                 {
-                    MessageBox.Show("Дата не раньше и не сегодня!", "", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else { 
-                order.Date = dateDp.SelectedDate;
-                DBConnection.mop.Orders.Add(order);
-                DBConnection.mop.SaveChanges();
+                    order.Price = int.Parse(priceTb.Text.Trim());
+                    if (dateDp.SelectedDate < DateTime.Now)
+                    {
+                        MessageBox.Show("Дата не раньше и не сегодня!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        order.Square = int.Parse(squareTb.Text.Trim());
+                        order.Date = dateDp.SelectedDate;
+                        DBConnection.mop.Orders.Add(order);
+                        DBConnection.mop.SaveChanges();
 
-                MessageBox.Show("Данные сохранены!");
-                NavigationService.Navigate(new OrdersPage());}
+                        MessageBox.Show("Данные сохранены!");
+                        NavigationService.Navigate(new OrdersPage());
+                    }
+                }
+                catch (Exception ex)
+                { MessageBox.Show(ex.Message); }
+                
+                    
             }
         }
 
@@ -85,14 +94,21 @@ namespace mop.Pages.addingPages
 
         private void squareTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (serv == null)
-            { }
-            else
+            try
             {
-                if (squareTb.Text == "")
-                { priceTb.Text = (serv.Price).ToString(); }
+                if (serv == null)
+                { }
                 else
-                priceTb.Text = (serv.Price * int.Parse(squareTb.Text.Trim())).ToString();
+                {
+                    if (squareTb.Text == "")
+                    { priceTb.Text = (serv.Price).ToString(); }
+                    else
+                        priceTb.Text = (serv.Price * int.Parse(squareTb.Text.Trim())).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
