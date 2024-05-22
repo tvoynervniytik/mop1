@@ -28,17 +28,10 @@
                 FontSize="34"
                 FontWeight="Bold"
                 Width="200" Height="100"
-                Background="Transparent"
                 BorderThickness="0" 
+                Style="{StaticResource back}"
                 x:Name="BackBtn" 
                 Click="BackBtn_Click">
-            <Button.Foreground>
-                <LinearGradientBrush>
-                    <GradientStop Color="#C0D5B3" Offset="0"/>
-                    <GradientStop Color="#B3C9D5" Offset="0.5"/>
-                    <GradientStop Color="#A3AEE6" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground>
         </Button>
         <Image Source="/Images/Vector.png"
            Grid.Column="2" 

@@ -30,16 +30,10 @@
                 FontWeight="Bold"
                 Width="200" Height="100"
                 ToolTip="возвращение назад"
-                Background="Transparent"
+                Style="{StaticResource back}"
                 BorderThickness="0" 
                 x:Name="BackBtn" Click="BackBtn_Click" Margin="65,10,1015,602">
-            <Button.Foreground>
-                <LinearGradientBrush>
-                    <GradientStop Color="#C0D5B3" Offset="0"/>
-                    <GradientStop Color="#B3C9D5" Offset="0.5"/>
-                    <GradientStop Color="#A3AEE6" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground>
+            
         </Button>
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">

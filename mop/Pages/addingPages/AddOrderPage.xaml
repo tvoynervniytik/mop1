@@ -24,20 +24,12 @@
         </Grid.ColumnDefinitions>
 
         <Button Content="← назад"
-                FontSize="34"
+                FontSize="34" Style="{StaticResource back}"
                 FontWeight="Bold"
                 Width="200" Height="100"
-                Background="Transparent"
                 BorderThickness="0" 
                 x:Name="BackBtn" 
                 Click="BackBtn_Click">
-            <Button.Foreground>
-                <LinearGradientBrush>
-                    <GradientStop Color="#C0D5B3" Offset="0"/>
-                    <GradientStop Color="#B3C9D5" Offset="0.5"/>
-                    <GradientStop Color="#A3AEE6" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground>
         </Button>
         <Image Source="/Images/Vector.png"
            Grid.Column="2" 
@@ -318,7 +310,7 @@
             <Button Content="добавить"
                 FontSize="40"
                 FontWeight="Bold"
-                Foreground="White" Width="200"
+                Foreground="White" Width="250"
                 Background="Transparent"
                 BorderThickness="0" 
                 x:Name="SaveBtn" Click="SaveBtn_Click" Height="60" 
