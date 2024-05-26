@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using mop.Pages;
+using mop.Windows;
 
 namespace mop
 {
@@ -26,7 +27,7 @@ namespace mop
         public MainWindow()
         {
             InitializeComponent();
-             navFr.NavigationService.Navigate(new AuthorizationPage());
+            navFr.NavigationService.Navigate(new AuthorizationPage());
         }
     }
 }

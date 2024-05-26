@@ -126,13 +126,14 @@ namespace mop.Pages
             }
             requestsLv.ItemsSource = ItemsRequestlv;
          }
-
+        public static Requests requestSelected {  get; set; }
         private void checkedBtn_Click(object sender, RoutedEventArgs e)
         {
             if (requestsLv.SelectedItem != null)
             {
-                var a = requestsLv.SelectedItem as Requests;
-                DBConnection.mop.Requests.Where(i => i.ID == a.ID).FirstOrDefault().Checking = true;
+                var a = requestsLv.SelectedItem as RequestsLv;
+                requestSelected = DBConnection.mop.Requests.First(i => i.ID == a.ID);
+                requestSelected.Checking = true;
                 Refresh();
             }
         }

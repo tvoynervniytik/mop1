@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Drawing;
+using System.Windows.Interop;
 namespace mop.Pages
 {
     /// <summary>
@@ -21,6 +22,7 @@ namespace mop.Pages
     /// </summary>
     public partial class AuthorizationPage : Page
     {
+        
         public AuthorizationPage()
         {
             InitializeComponent();
