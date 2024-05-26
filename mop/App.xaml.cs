@@ -16,7 +16,6 @@ namespace mop
     {
         public App()
         {
-            Thread.Sleep(2000);
         }
     }
 }

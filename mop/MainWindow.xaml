@@ -9,5 +9,7 @@
         Title="mop" Height="900" Width="1450">
     <Grid>
         <Frame x:Name="navFr" NavigationUIVisibility="Hidden"/>
+        
+
     </Grid>
 </Window>
