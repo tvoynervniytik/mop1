@@ -36,7 +36,8 @@
             </Image.RenderTransform>
         </Image>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel VerticalAlignment="Center" 
+                    HorizontalAlignment="Center">
             <TextBlock Text="расписание" 
                        FontSize="70" 
                        Margin="0 0 0 15"
@@ -50,7 +51,82 @@
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
             </TextBlock>
+            
+            <StackPanel Orientation="Horizontal">
 
+                <TextBlock Text="дата запроса: " FontWeight="Bold" FontSize="25">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <DatePicker x:Name="dateDp" Width="125" 
+                            Margin="0 0 30 10"
+                            SelectedDateChanged="dateDp_SelectedDateChanged">
+                    <DatePicker.Foreground>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </DatePicker.Foreground>
+                </DatePicker>
+                <TextBlock Text="бригада: " x:Name="brTb"
+                           FontWeight="Bold" FontSize="25"
+                           Margin="20 0 0 10">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+
+                <ComboBox Width="120" x:Name="brigadesCb" 
+                          Margin="0 0 0 10"
+                          SelectionChanged="brigadesCb_SelectionChanged"
+                          ItemsSource="{Binding brigades}">
+                    <ComboBox.Foreground>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ComboBox.Foreground>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ID}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Border CornerRadius="40"
+                        Width="40" 
+                            Margin="10 0 0 10">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#C0D5B3" Offset="0"/>
+                            <GradientStop Color="#B3C9D5" Offset="0.5"/>
+                            <GradientStop Color="#A3AEE6" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Button Content="×"
+                            FontSize="25"
+                            FontWeight="Bold"
+                            Height="40" Style="{StaticResource circle}"
+                            ToolTip="удаление"
+                            Foreground="White"
+                            Background="Transparent"
+                            BorderThickness="0" 
+                            x:Name="delBtn" Click="delBtn_Click" 
+                            HorizontalAlignment="Left" Width="40"/>
+                </Border>
+
+
+            </StackPanel>
             <ListView x:Name="employeesLv" 
                       Width="1000" Height="400"
                       FontSize="20"

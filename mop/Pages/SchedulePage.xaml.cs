@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static mop.Pages.RequestsPage;
 
 namespace mop.Pages
 {
@@ -23,13 +24,21 @@ namespace mop.Pages
     public partial class SchedulePage : Page
     {
         public static List<Orders> orders { get; set; }
+        public static List<Brigades> brigades { get; set; }    
         public SchedulePage()
         {
             InitializeComponent();
             if (AuthorizationFunc.loggedUser.PostID == 1)
-                orders = new List<Orders>(DBConnection.mop.Orders.Where(i=>i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList());
+            {
+                orders = new List<Orders>(DBConnection.mop.Orders.
+                    Where(i => i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList());
+                brigadesCb.Visibility = Visibility.Hidden;
+                brTb.Visibility = Visibility.Hidden;
+                delBtn.Visibility = Visibility.Hidden;
+            }
             else
                 orders = new List<Orders>(DBConnection.mop.Orders.ToList());
+            brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
             this.DataContext = this;
         }
 
@@ -41,6 +50,44 @@ namespace mop.Pages
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MenuFirstPage());
+        }
+
+        private void dateDp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+        public void Refresh()
+        {
+            var itemssource = new List<Orders>(DBConnection.mop.Orders.ToList());
+
+            if (dateDp.SelectedDate == null) 
+            {
+                if (AuthorizationFunc.loggedUser.PostID == 1)
+                    itemssource = itemssource.Where(i => i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList();
+            }
+            else //dateDp
+                itemssource = itemssource.Where(i => i.Date == dateDp.SelectedDate).ToList();
+            if (brigadesCb.SelectedItem == null)
+            {
+                
+            }
+            else //brigadesCb
+            {
+                var b = brigadesCb.SelectedItem as Brigades;
+                itemssource = itemssource.Where(i=> i.BrigadeID == b.ID).ToList();
+            }
+            employeesLv.ItemsSource = itemssource;
+        }
+
+        private void brigadesCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            brigadesCb.SelectedItem = null;
+            Refresh();
         }
     }
 }
