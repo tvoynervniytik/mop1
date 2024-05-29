@@ -52,7 +52,7 @@
                 </LinearGradientBrush>
             </TextBlock.Foreground>
         </TextBlock>
-        <TextBlock Text="введите ваши паспортные данные"
+        <TextBlock Text="введите дополнительный пароль"
                FontSize="30" TextWrapping="Wrap"
                    Margin="0 40 0 0"
                FontWeight="Bold" Width="500" TextAlignment="Center"
@@ -79,7 +79,7 @@
                     <GradientStop Color="#A3AEE6" Offset="1"/>
                 </LinearGradientBrush>
             </Border.BorderBrush>
-            <TextBox Background="Transparent"
+            <PasswordBox Background="Transparent"
       FontSize="35"  
       Height="50" 
                  Width="300"
@@ -87,14 +87,14 @@
       Padding="15 0 0 0"
       x:Name="pasportTb">
 
-                <TextBlock.Foreground>
+                <PasswordBox.Foreground>
                     <LinearGradientBrush>
                         <GradientStop Color="#C0D5B3" Offset="0"/>
                         <GradientStop Color="#B3C9D5" Offset="0.5"/>
                         <GradientStop Color="#A3AEE6" Offset="1"/>
                     </LinearGradientBrush>
-                </TextBlock.Foreground>
-            </TextBox>
+                </PasswordBox.Foreground>
+            </PasswordBox>
         </Border>
         <Border CornerRadius="26" Height="35" Width="150"
             Grid.Column="1"

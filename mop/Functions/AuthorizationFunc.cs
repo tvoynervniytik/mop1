@@ -11,8 +11,7 @@ namespace mop.Functions
 {
     internal class AuthorizationFunc
     {
-        private static string login;
-        private static string password;
+        public static string SecondPass = "222";
         public static Employees loggedUser;
         public static bool Question = false;
         public static void Authorization(string login, string password)

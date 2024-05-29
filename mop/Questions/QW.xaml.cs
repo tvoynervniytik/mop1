@@ -27,7 +27,7 @@ namespace mop.Questions
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (AuthorizationFunc.loggedUser.Passport == pasportTb.Text)
+            if (AuthorizationFunc.SecondPass == pasportTb.Password)
             {
                 this.Close();
                 AuthorizationFunc.Question = true;
