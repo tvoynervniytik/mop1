@@ -43,7 +43,15 @@ namespace mop.Pages
         }
         public void Refresh()
         {
-            clientsLv.ItemsSource = new List<Clients>(DBConnection.mop.Clients.ToList());
+            if (surnameTb.Text == "")
+            {
+                clientsLv.ItemsSource = new List<Clients>(DBConnection.mop.Clients.ToList());
+            }
+            else 
+            { 
+                clientsLv.ItemsSource = 
+                    new List<Clients>(DBConnection.mop.Clients.Where(i=>i.Surname.ToLower().StartsWith(surnameTb.Text.Trim().ToLower()) ).ToList());
+            }
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
@@ -61,6 +69,11 @@ namespace mop.Pages
         {
             if (clientsLv.SelectedItem as Clients != null)
                 NavigationService.Navigate(new ClientsEditPage(clientsLv.SelectedItem as Clients));
+        }
+
+        private void surnameTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Refresh();
         }
     }
 }

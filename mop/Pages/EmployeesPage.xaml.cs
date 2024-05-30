@@ -33,7 +33,13 @@ namespace mop.Pages
         }
         public void Refresh()
         {
-            employeesLv.ItemsSource = new List<Employees>(DBConnection.mop.Employees.Where(i=> i.PostID != 4).ToList());
+            if (surnameTb.Text == "") 
+            {
+                employeesLv.ItemsSource = new List<Employees>(DBConnection.mop.Employees.Where(i => i.PostID != 4).ToList());
+            }
+            else
+                employeesLv.ItemsSource = new List<Employees>(DBConnection.mop.Employees.Where(i=> i.PostID != 4 && 
+            i.Surname.ToLower().StartsWith(surnameTb.Text.Trim().ToLower())).ToList());
         }
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -56,6 +62,11 @@ namespace mop.Pages
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void surnameTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             Refresh();
         }
