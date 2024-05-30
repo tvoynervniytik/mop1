@@ -257,7 +257,7 @@
                     <GradientStop Color="#A3AEE6" Offset="1"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Button Content="добавить"
+            <Button Content="изменить"
                 FontSize="45" Height="60"
                 FontWeight="Bold"
                 Foreground="White"
