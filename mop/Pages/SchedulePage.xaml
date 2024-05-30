@@ -104,7 +104,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <Border CornerRadius="40"
-                        Width="40" 
+                        Width="40" x:Name="delBtn"
                             Margin="10 0 0 10">
                     <Border.Background>
                         <LinearGradientBrush>
@@ -121,7 +121,7 @@
                             Foreground="White"
                             Background="Transparent"
                             BorderThickness="0" 
-                            x:Name="delBtn" Click="delBtn_Click" 
+                            Click="delBtn_Click" 
                             HorizontalAlignment="Left" Width="40"/>
                 </Border>
 

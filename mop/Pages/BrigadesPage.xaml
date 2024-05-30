@@ -64,7 +64,7 @@
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Header="Id бригады" 
+                            <GridViewColumn Header="Номер бригады" 
                                           Width="200">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
@@ -79,7 +79,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Id сотрудников" 
+                            <GridViewColumn Header="Id начальника" 
                                           Width="200">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
@@ -94,7 +94,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="ФИО" 
+                            <GridViewColumn Header="ФИО начальника" 
                                           Width="500">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
