@@ -18,7 +18,7 @@ namespace mop.DB
         public Brigades()
         {
             this.Employees1 = new HashSet<Employees>();
-            this.ServiceOrder = new HashSet<ServiceOrder>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int ID { get; set; }
@@ -28,6 +28,6 @@ namespace mop.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceOrder> ServiceOrder { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

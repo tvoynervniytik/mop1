@@ -126,9 +126,6 @@
     <Compile Include="DB\Requests.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\ServiceOrder.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="DB\Services.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -17,7 +17,7 @@ namespace mop.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Services()
         {
-            this.ServiceOrder = new HashSet<ServiceOrder>();
+            this.Orders = new HashSet<Orders>();
         }
     
         public int ID { get; set; }
@@ -26,6 +26,6 @@ namespace mop.DB
         public Nullable<int> Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceOrder> ServiceOrder { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

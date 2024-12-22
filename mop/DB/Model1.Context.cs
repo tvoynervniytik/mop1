@@ -35,7 +35,6 @@ namespace mop.DB
         public virtual DbSet<Posts> Posts { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Requests> Requests { get; set; }
-        public virtual DbSet<ServiceOrder> ServiceOrder { get; set; }
         public virtual DbSet<Services> Services { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }

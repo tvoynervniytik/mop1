@@ -33,7 +33,9 @@ namespace mop.Pages.editingPages
             clients = new List<Clients>(DBConnection.mop.Clients.ToList());
             brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
             services = new List<Services>(DBConnection.mop.Services.ToList());
-           
+
+            servicesCb.Text = order.Services.Name;
+            servicesCb.SelectedItem = order.ServiceID;
             dateDp.SelectedDate = order.Date;
             priceTb.Text = (order.Price).ToString();
             this.DataContext = this;
@@ -47,7 +49,7 @@ namespace mop.Pages.editingPages
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             Orders order = new Orders();
-            if (squareTb.Text == "" || dateDp.SelectedDate == null)
+            if ((squareTb.Text == "" && servicesCb.SelectedIndex == 0)|| dateDp.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все данные!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -63,16 +65,17 @@ namespace mop.Pages.editingPages
                     if (brigadesCb.SelectedItem != null)
                     {
                         var brigade = brigadesCb.SelectedItem as Brigades;
-                        //ordr.BrigadeID = brigade.ID;
+                        ordr.BrigadeID = brigade.ID;
                     }
                     if (servicesCb.SelectedItem != null)
                     {
                         var service = servicesCb.SelectedItem as Services;
-                        //ordr.ServicesID = service.ID;
+                        ordr.ServiceID = service.ID;
                     }
                     if (priceTb.Text != "")
                         ordr.Price = int.Parse(priceTb.Text.Trim());
-                    //ordr.Square = int.Parse(squareTb.Text.Trim());
+                    if (servicesCb.SelectedIndex == 0)
+                        ordr.CountPeople = int.Parse(squareTb.Text.Trim());
                     ordr.Date = dateDp.SelectedDate;
                     DBConnection.mop.SaveChanges();
 
@@ -88,9 +91,15 @@ namespace mop.Pages.editingPages
             var service = servicesCb.SelectedItem as Services;
             serv = service;
             if (squareTb.Text == "")
-            { priceTb.Text = (serv.Price).ToString(); }
+                priceTb.Text = (serv.Price).ToString(); 
             else
                 priceTb.Text = (serv.Price * int.Parse(squareTb.Text.Trim())).ToString();
+            if (servicesCb.SelectedIndex != 0)
+            {
+                squareTb.Text = "";
+                squareTb.IsEnabled = false;
+            }
+            else squareTb.IsEnabled = true;
         
     }
 

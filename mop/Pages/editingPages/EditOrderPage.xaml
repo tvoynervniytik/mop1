@@ -225,7 +225,7 @@
             </TextBox>
         </Border>
 
-        <TextBlock Text="площадь/кол-во" 
+        <TextBlock Text="кол-во человек" 
                    FontSize="35"
                    FontWeight="Bold"
                    HorizontalAlignment="Center" 

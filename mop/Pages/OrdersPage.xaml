@@ -128,7 +128,7 @@
                             </GridViewColumn>
 
                             <GridViewColumn Header="услуга" 
-                                            Width="300">
+                                            Width="250">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#B3C9D5" />
@@ -137,7 +137,9 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Services.Name}" Foreground="#B3C9D5"/>
+                                        <TextBlock Text="{Binding Services.Name}"
+                                                   Foreground="#B3C9D5"
+                                                   TextWrapping="Wrap"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -155,8 +157,8 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="объём" 
-                                            Width="100">
+                            <GridViewColumn Header="кол-во чел" 
+                                            Width="120">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#A3AEE6" />
@@ -165,7 +167,7 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Square}" Foreground="#A3AEE6"/>
+                                        <TextBlock Text="{Binding CountPeople}" Foreground="#A3AEE6"/>
                                            
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
