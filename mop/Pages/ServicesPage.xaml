@@ -64,7 +64,7 @@
                     <GridView>
                         <GridView.Columns>
                             <GridViewColumn Header="Id" 
-                                   Width="150">
+                                   Width="100">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#B8CEC5" />
@@ -79,7 +79,7 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="Название" 
-                                   Width="300">
+                                   Width="350">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#B8CEC5" />
@@ -110,7 +110,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Цена за кв.м/кол-во окон" 
+                            <GridViewColumn Header="Цена" 
                                    Width="300">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
