@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище mopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище mopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,11 +71,9 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientID" Type="int" />
-          <Property Name="BrigadeID" Type="int" />
-          <Property Name="ServicesID" Type="int" />
           <Property Name="Price" Type="int" />
-          <Property Name="Square" Type="int" />
           <Property Name="Date" Type="date" />
+          <Property Name="CountPeople" Type="int" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
@@ -84,6 +82,14 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Salary" Type="int" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Requests">
           <Key>
@@ -96,6 +102,15 @@
           <Property Name="Date" Type="date" />
           <Property Name="Checking" Type="bit" />
           <Property Name="Done" Type="bit" />
+        </EntityType>
+        <EntityType Name="ServiceOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ServiceID" Type="int" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="BrigadeID" Type="int" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -188,18 +203,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_Brigades">
-          <End Role="Brigades" Type="Self.Brigades" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Brigades">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="BrigadeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Orders_Clients">
           <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
@@ -209,18 +212,6 @@
             </Principal>
             <Dependent Role="Orders">
               <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Orders_Services">
-          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Services">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ServicesID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -236,6 +227,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ServiceOrder_Brigades">
+          <End Role="Brigades" Type="Self.Brigades" Multiplicity="0..1" />
+          <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brigades">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceOrder">
+              <PropertyRef Name="BrigadeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceOrder_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceOrder">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceOrder_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceOrder">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище mopModelContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brigades" EntityType="Self.Brigades" Schema="dbo" store:Type="Tables" />
@@ -245,7 +272,9 @@
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceOrder" EntityType="Self.ServiceOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Address_Clients" Association="Self.FK_Address_Clients">
@@ -272,24 +301,29 @@
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK_Orders_Brigades" Association="Self.FK_Orders_Brigades">
-            <End Role="Brigades" EntitySet="Brigades" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_Orders_Clients" Association="Self.FK_Orders_Clients">
             <End Role="Clients" EntitySet="Clients" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Orders_Services" Association="Self.FK_Orders_Services">
-            <End Role="Services" EntitySet="Services" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Requests_Employees" Association="Self.FK_Requests_Employees">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Requests" EntitySet="Requests" />
           </AssociationSet>
+          <AssociationSet Name="FK_ServiceOrder_Brigades" Association="Self.FK_ServiceOrder_Brigades">
+            <End Role="Brigades" EntitySet="Brigades" />
+            <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceOrder_Orders" Association="Self.FK_ServiceOrder_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceOrder_Services" Association="Self.FK_ServiceOrder_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="mopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -312,7 +346,7 @@
           <Property Name="HeadID" Type="Int32" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Brigades_Employees" FromRole="Brigades" ToRole="Employees" />
           <NavigationProperty Name="Employees1" Relationship="Self.FK_Employees_Brigades" FromRole="Brigades" ToRole="Employees" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Brigades" FromRole="Brigades" ToRole="Orders" />
+          <NavigationProperty Name="ServiceOrder" Relationship="Self.FK_ServiceOrder_Brigades" FromRole="Brigades" ToRole="ServiceOrder" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -373,14 +407,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientID" Type="Int32" />
-          <Property Name="BrigadeID" Type="Int32" />
-          <Property Name="ServicesID" Type="Int32" />
           <Property Name="Price" Type="Int32" />
-          <Property Name="Square" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Brigades" Relationship="Self.FK_Orders_Brigades" FromRole="Orders" ToRole="Brigades" />
+          <Property Name="CountPeople" Type="Int32" />
           <NavigationProperty Name="Clients" Relationship="Self.FK_Orders_Clients" FromRole="Orders" ToRole="Clients" />
-          <NavigationProperty Name="Services" Relationship="Self.FK_Orders_Services" FromRole="Orders" ToRole="Services" />
+          <NavigationProperty Name="ServiceOrder" Relationship="Self.FK_ServiceOrder_Orders" FromRole="Orders" ToRole="ServiceOrder" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
@@ -390,6 +421,14 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Salary" Type="Int32" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Posts" FromRole="Posts" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Requests">
           <Key>
@@ -404,15 +443,27 @@
           <Property Name="Done" Type="Boolean" />
           <NavigationProperty Name="Employees" Relationship="Self.FK_Requests_Employees" FromRole="Requests" ToRole="Employees" />
         </EntityType>
-        <EntityType Name="Services">
+        <EntityType Name="ServiceOrder">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceID" Type="Int32" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="BrigadeID" Type="Int32" />
+          <NavigationProperty Name="Brigades" Relationship="Self.FK_ServiceOrder_Brigades" FromRole="ServiceOrder" ToRole="Brigades" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_ServiceOrder_Orders" FromRole="ServiceOrder" ToRole="Orders" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_ServiceOrder_Services" FromRole="ServiceOrder" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Int32" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Services" FromRole="Services" ToRole="Orders" />
+          <NavigationProperty Name="ServiceOrder" Relationship="Self.FK_ServiceOrder_Services" FromRole="Services" ToRole="ServiceOrder" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -460,14 +511,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_Brigades">
+        <Association Name="FK_ServiceOrder_Brigades">
           <End Role="Brigades" Type="Self.Brigades" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Brigades">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Orders">
+            <Dependent Role="ServiceOrder">
               <PropertyRef Name="BrigadeID" />
             </Dependent>
           </ReferentialConstraint>
@@ -532,15 +583,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_Services">
+        <Association Name="FK_ServiceOrder_Orders">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ServiceOrder">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceOrder_Services">
           <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <End Role="ServiceOrder" Type="Self.ServiceOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Services">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ServicesID" />
+            <Dependent Role="ServiceOrder">
+              <PropertyRef Name="ServiceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -553,7 +616,9 @@
           <EntitySet Name="Employees" EntityType="Self.Employees" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="Posts" EntityType="Self.Posts" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" />
           <EntitySet Name="Requests" EntityType="Self.Requests" />
+          <EntitySet Name="ServiceOrder" EntityType="Self.ServiceOrder" />
           <EntitySet Name="Services" EntityType="Self.Services" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_Address_Clients" Association="Self.FK_Address_Clients">
@@ -568,9 +633,9 @@
             <End Role="Brigades" EntitySet="Brigades" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK_Orders_Brigades" Association="Self.FK_Orders_Brigades">
+          <AssociationSet Name="FK_ServiceOrder_Brigades" Association="Self.FK_ServiceOrder_Brigades">
             <End Role="Brigades" EntitySet="Brigades" />
-            <End Role="Orders" EntitySet="Orders" />
+            <End Role="ServiceOrder" EntitySet="ServiceOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_Clients_ClientTypes" Association="Self.FK_Clients_ClientTypes">
             <End Role="ClientTypes" EntitySet="ClientTypes" />
@@ -592,9 +657,13 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Requests" EntitySet="Requests" />
           </AssociationSet>
-          <AssociationSet Name="FK_Orders_Services" Association="Self.FK_Orders_Services">
-            <End Role="Services" EntitySet="Services" />
+          <AssociationSet Name="FK_ServiceOrder_Orders" Association="Self.FK_ServiceOrder_Orders">
             <End Role="Orders" EntitySet="Orders" />
+            <End Role="ServiceOrder" EntitySet="ServiceOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceOrder_Services" Association="Self.FK_ServiceOrder_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServiceOrder" EntitySet="ServiceOrder" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -674,11 +743,9 @@
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-                <ScalarProperty Name="BrigadeID" ColumnName="BrigadeID" />
-                <ScalarProperty Name="ServicesID" ColumnName="ServicesID" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Square" ColumnName="Square" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CountPeople" ColumnName="CountPeople" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -688,6 +755,15 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="mopModel.Questions">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -701,6 +777,16 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Checking" ColumnName="Checking" />
                 <ScalarProperty Name="Done" ColumnName="Done" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceOrder">
+            <EntityTypeMapping TypeName="mopModel.ServiceOrder">
+              <MappingFragment StoreEntitySet="ServiceOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="BrigadeID" ColumnName="BrigadeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -33,7 +33,7 @@ namespace mop.Pages.editingPages
             clients = new List<Clients>(DBConnection.mop.Clients.ToList());
             brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
             services = new List<Services>(DBConnection.mop.Services.ToList());
-            squareTb.Text = order.Square.ToString();
+           
             dateDp.SelectedDate = order.Date;
             priceTb.Text = (order.Price).ToString();
             this.DataContext = this;
@@ -63,16 +63,16 @@ namespace mop.Pages.editingPages
                     if (brigadesCb.SelectedItem != null)
                     {
                         var brigade = brigadesCb.SelectedItem as Brigades;
-                        ordr.BrigadeID = brigade.ID;
+                        //ordr.BrigadeID = brigade.ID;
                     }
                     if (servicesCb.SelectedItem != null)
                     {
                         var service = servicesCb.SelectedItem as Services;
-                        ordr.ServicesID = service.ID;
+                        //ordr.ServicesID = service.ID;
                     }
                     if (priceTb.Text != "")
                         ordr.Price = int.Parse(priceTb.Text.Trim());
-                    ordr.Square = int.Parse(squareTb.Text.Trim());
+                    //ordr.Square = int.Parse(squareTb.Text.Trim());
                     ordr.Date = dateDp.SelectedDate;
                     DBConnection.mop.SaveChanges();
 
@@ -100,7 +100,7 @@ namespace mop.Pages.editingPages
             {
                 if (serv == null)
                 {
-                    priceTb.Text = (ordr.Price / ordr.Square * int.Parse(squareTb.Text.Trim())).ToString();
+                    //priceTb.Text = (ordr.Price / ordr.Square * int.Parse(squareTb.Text.Trim())).ToString();
                 }
                 else
                 {

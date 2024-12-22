@@ -12,22 +12,15 @@ namespace mop.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class ServiceOrder
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Orders()
-        {
-            this.ServiceOrder = new HashSet<ServiceOrder>();
-        }
-    
         public int ID { get; set; }
-        public Nullable<int> ClientID { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> CountPeople { get; set; }
+        public Nullable<int> ServiceID { get; set; }
+        public Nullable<int> OrderID { get; set; }
+        public Nullable<int> BrigadeID { get; set; }
     
-        public virtual Clients Clients { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceOrder> ServiceOrder { get; set; }
+        public virtual Brigades Brigades { get; set; }
+        public virtual Orders Orders { get; set; }
+        public virtual Services Services { get; set; }
     }
 }

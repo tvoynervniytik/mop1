@@ -30,8 +30,8 @@ namespace mop.Pages
             InitializeComponent();
             if (AuthorizationFunc.loggedUser.PostID == 1)
             {
-                orders = new List<Orders>(DBConnection.mop.Orders.
-                    Where(i => i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList());
+                //    orders = new List<Orders>(DBConnection.mop.Orders.
+                //        Where(i => i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList());
                 brigadesCb.Visibility = Visibility.Hidden;
                 brTb.Visibility = Visibility.Hidden;
                 delBtn.Visibility = Visibility.Hidden;
@@ -62,8 +62,8 @@ namespace mop.Pages
 
             if (dateDp.SelectedDate == null) 
             {
-                if (AuthorizationFunc.loggedUser.PostID == 1)
-                    itemssource = itemssource.Where(i => i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList();
+                //if (AuthorizationFunc.loggedUser.PostID == 1)
+                    //itemssource = itemssource.Where(i => i.BrigadeID == AuthorizationFunc.loggedUser.BrigadeID).ToList();
             }
             else //dateDp
                 itemssource = itemssource.Where(i => i.Date == dateDp.SelectedDate).ToList();
@@ -74,7 +74,7 @@ namespace mop.Pages
             else //brigadesCb
             {
                 var b = brigadesCb.SelectedItem as Brigades;
-                itemssource = itemssource.Where(i=> i.BrigadeID == b.ID).ToList();
+                //itemssource = itemssource.Where(i=> i.BrigadeID == b.ID).ToList();
             }
             employeesLv.ItemsSource = itemssource;
         }

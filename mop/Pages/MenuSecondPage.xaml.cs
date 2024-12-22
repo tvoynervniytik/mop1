@@ -56,7 +56,10 @@ namespace mop.Pages
                 var result = MessageBox.Show("Вы уверены, что хотите выйти из профиля???", "Подтверждение выхода",
                 MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
+                {
+                    AuthorizationFunc.Question = false;
                     NavigationService.Navigate(new AuthorizationPage());
+                }
             }
             else
                 NavigationService.Navigate(new MenuFirstPage());

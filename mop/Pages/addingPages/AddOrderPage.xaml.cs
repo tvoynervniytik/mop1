@@ -54,8 +54,6 @@ namespace mop.Pages.addingPages
                 var brigade = brigadesCb.SelectedItem as Brigades;
                 var service = servicesCb.SelectedItem as Services;
                 order.ClientID = client.ID;
-                order.BrigadeID = brigade.ID;
-                order.ServicesID = service.ID;
                 try
                 {
                     order.Price = int.Parse(priceTb.Text.Trim());
@@ -65,7 +63,6 @@ namespace mop.Pages.addingPages
                     }
                     else
                     {
-                        order.Square = int.Parse(squareTb.Text.Trim());
                         order.Date = dateDp.SelectedDate;
                         DBConnection.mop.Orders.Add(order);
                         DBConnection.mop.SaveChanges();

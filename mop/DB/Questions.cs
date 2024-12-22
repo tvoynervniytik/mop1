@@ -12,20 +12,10 @@ namespace mop.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Services
+    public partial class Questions
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Services()
-        {
-            this.ServiceOrder = new HashSet<ServiceOrder>();
-        }
-    
         public int ID { get; set; }
-        public string Name { get; set; }
         public string Description { get; set; }
-        public Nullable<int> Price { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceOrder> ServiceOrder { get; set; }
+        public string Answer { get; set; }
     }
 }
