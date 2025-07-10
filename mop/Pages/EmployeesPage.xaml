@@ -50,7 +50,8 @@
                     </LinearGradientBrush>
                 </TextBlock.Foreground>
             </TextBlock>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 20">
                 <TextBlock Text="фамилия: " FontWeight="Bold" FontSize="25">
                     <TextBlock.Foreground>
                         <LinearGradientBrush>
@@ -83,6 +84,7 @@
                       Width="1200" Height="400"
                       FontSize="20"
                       ItemsSource="{Binding employees}"
+                      d:ItemsSource="{d:SampleData ItemCount=9}"
                 >
                 <ListView.Foreground>
                     <LinearGradientBrush>
@@ -146,7 +148,7 @@
                             </GridViewColumn>
 
                             <GridViewColumn Header="должность" 
-                                            Width="380">
+                                            Width="310">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#B3C9D5" />
@@ -155,12 +157,14 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Posts.Name}" Foreground="#B3C9D5"/>
+                                        <TextBlock Text="{Binding Posts.Name}" 
+                                                   Foreground="#B3C9D5"
+                                                   TextWrapping="Wrap"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
                             <GridViewColumn Header="образование" 
-                                            Width="300">
+                                            Width="250">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#AABADD" />
@@ -169,12 +173,19 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Education.Name}" Foreground="#AABADD"/>
+                                        <TextBlock Text="{Binding Education.Name}"
+                                                   Foreground="#AABADD"
+                                                   TextWrapping="Wrap"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="вход" 
-                                            Width="70">
+                            <GridViewColumn Width="180">
+                                <GridViewColumnHeader>
+                                    <TextBlock TextWrapping="Wrap"
+                                               TextAlignment="Center">
+                                       данные для аутентификации
+                                    </TextBlock>
+                                </GridViewColumnHeader>
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
                                         <Setter Property="Foreground" Value="#A3AEE6" />
@@ -184,9 +195,14 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Login}" Foreground="#A3AEE6"/>
-                                            <TextBlock Text="{Binding Password}" Foreground="#A3AEE6"/>
-                                        </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Логин: "/>
+                                                <TextBlock Text="{Binding Login}" Foreground="#A3AEE6"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Пароль: "/>
+                                                <TextBlock Text="{Binding Password}" Foreground="#A3AEE6"/>
+                                            </StackPanel>  </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -194,7 +210,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0 20">
 
                 <StackPanel x:Name="mngS" Orientation="Horizontal">
                     <Border CornerRadius="40"

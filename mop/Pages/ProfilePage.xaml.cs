@@ -53,7 +53,8 @@ namespace mop.Pages
             emailTb.Text = employee.Email;
             email = employee.Email;
             //
-            education = (int)employee.EducationID;
+            Education education = educations.FirstOrDefault(x => x.ID == employee.EducationID);
+            educationCb.SelectedItem = education;
             //
             patronymicTb.Text = employee.Patronymic;
             patronymic = employee.Patronymic;
@@ -69,7 +70,9 @@ namespace mop.Pages
             //
             phoneTb.Text = employee.Phone;
             phone = employee.Phone;
-            this.DataContext = this;
+
+            educationCb.ItemsSource = educations;
+
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)

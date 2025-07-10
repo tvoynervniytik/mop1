@@ -27,20 +27,26 @@ namespace mop.Pages
             if (AuthorizationFunc.loggedUser.PostID == 2) //clients meneger
             {
                 emplBrd.Visibility = Visibility.Hidden;
+                emplBrd.Height = 0;
                 requestBr.Visibility = Visibility.Hidden;
+                requestBr.Height = 0;
             }
             if (AuthorizationFunc.loggedUser.PostID == 3) //employees meneger
             {
                 clientsBrd.Visibility = Visibility.Hidden;
+                clientsBrd.Height = 0;
                 servicesBrd.Visibility = Visibility.Hidden;
+                servicesBrd.Height = 0;
             }
             if (AuthorizationFunc.loggedUser.PostID == 1) //worker
             {
                 MngStP.Visibility = Visibility.Hidden;
+                MngStP.Height = 0;
             }
             if (AuthorizationFunc.loggedUser.PostID == 4) //admin
             {
                 profileBr.Visibility = Visibility.Hidden;
+                profileBr.Height = 0;
             }
         }
 

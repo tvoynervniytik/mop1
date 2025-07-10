@@ -222,7 +222,7 @@
             </TextBox>
         </Border>
         
-        <TextBlock Text="кол-во человек" 
+        <TextBlock Text="кол-во окон/площадь" 
                    FontSize="35"
                    FontWeight="Bold"
                    HorizontalAlignment="Center" 
@@ -254,7 +254,8 @@
                     Height="50"
                     BorderThickness="0"
                     Padding="15 0 0 0"
-                    x:Name="squareTb" TextChanged="squareTb_TextChanged">
+                    x:Name="squareTb"
+                    TextChanged="squareTb_TextChanged">
 
                 <TextBlock.Foreground>
                     <LinearGradientBrush>

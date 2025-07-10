@@ -33,7 +33,8 @@ namespace mop.Pages.editingPages
             patronymicTb.Text = clien.Patronymic;
             phoneTb.Text = clien.Phone;
             emailTb.Text = clien.Email;
-            this.DataContext = this;
+            typesCb.ItemsSource = types;
+            typesCb.SelectedItem = types.FirstOrDefault(i=>i.ID == client.ClientTypeID);
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)

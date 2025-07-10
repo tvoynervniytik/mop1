@@ -53,6 +53,7 @@
          Width="1000" Height="400"
          FontSize="20"
          ItemsSource="{Binding addresses}"
+                      d:ItemsSource="{d:SampleData ItemCount=9}"
    >
                 <ListView.Foreground>
                     <LinearGradientBrush>
@@ -90,11 +91,12 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding Street}" Foreground="#B8CEC5"/>
-                                            <TextBlock Text=" "/>
-                                            <TextBlock Text="{Binding HouseNumber}" Foreground="#B8CEC5"/>
-                                            <TextBlock Text=" "/>
-                                            <TextBlock Text="{Binding RoomNumber}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text="ул. "/>
+                                            <TextBlock Text="{Binding StreetName}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text=" д. "/>
+                                            <TextBlock Text="{Binding House}" Foreground="#B8CEC5"/>
+                                            <TextBlock Text=" пом. "/>
+                                            <TextBlock Text="{Binding Room}" Foreground="#B8CEC5"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>

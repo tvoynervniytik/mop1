@@ -53,6 +53,7 @@
             <ListView x:Name="ordersLv" 
                       Width="1200" Height="400"
                       FontSize="20"
+                      d:ItemsSource="{d:SampleData ItemCount=9}"
                       ItemsSource="{Binding orders}"
                 >
                 <ListView.Foreground>
@@ -143,21 +144,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="стоимость" 
-                                            Width="150">
-                                <GridViewColumn.HeaderContainerStyle>
-                                    <Style  TargetType="GridViewColumnHeader">
-                                        <Setter Property="Foreground" Value="#AABADD" />
-                                        <Setter Property="FontWeight" Value="DemiBold"/>
-                                    </Style>
-                                </GridViewColumn.HeaderContainerStyle>
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Price}" Foreground="#AABADD"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                            <GridViewColumn Header="кол-во чел" 
+                            <GridViewColumn Header="объём" 
                                             Width="120">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">
@@ -182,8 +169,26 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Date}" Foreground="#A3AEE6"/>
+                                        <TextBlock Text="{Binding DateCorrect}" Foreground="#A3AEE6"/>
                                            
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="стоимость" 
+                                            Width="150">
+                                <GridViewColumn.HeaderContainerStyle>
+                                    <Style  TargetType="GridViewColumnHeader">
+                                        <Setter Property="Foreground" Value="#AABADD" />
+                                        <Setter Property="FontWeight" Value="DemiBold"/>
+                                    </Style>
+                                </GridViewColumn.HeaderContainerStyle>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Price}" FontWeight="DemiBold"
+                                                   Foreground="#AABADD"/>
+                                            <TextBlock Text=" ₽" FontWeight="DemiBold"/>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

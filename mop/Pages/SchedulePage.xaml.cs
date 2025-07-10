@@ -39,6 +39,7 @@ namespace mop.Pages
             else
                 orders = new List<Orders>(DBConnection.mop.Orders.ToList());
             brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
+            brigades.Sort((b1, b2)=>b1.ID.CompareTo(b2.ID));
             this.DataContext = this;
         }
 

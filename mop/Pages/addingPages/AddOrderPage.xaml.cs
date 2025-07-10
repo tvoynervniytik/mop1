@@ -43,8 +43,8 @@ namespace mop.Pages.addingPages
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             Orders order = new Orders();
-            if (clients == null || brigades == null || services == null ||
-                priceTb.Text == "" || (squareTb.Text == "" && servicesCb.SelectedIndex == 0) || dateDp.SelectedDate == null)
+            if (clients == null || brigades == null || services == null 
+                || (squareTb.Text == "" && servicesCb.SelectedIndex == 0) || dateDp.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все данные!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -60,7 +60,6 @@ namespace mop.Pages.addingPages
                     order.CountPeople = int.Parse(squareTb.Text.Trim());
                 try
                 {
-                    order.Price = int.Parse(priceTb.Text.Trim());
                     if (dateDp.SelectedDate < DateTime.Now)
                     {
                         MessageBox.Show("Дата не раньше и не сегодня!", "", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -87,15 +86,10 @@ namespace mop.Pages.addingPages
             var service = servicesCb.SelectedItem as Services;
             serv = service;
             if (squareTb.Text == "")
-            { priceTb.Text = (serv.Price).ToString(); }
+                priceTb.Text = (serv.Price).ToString(); 
             else
                 priceTb.Text = (serv.Price * int.Parse(squareTb.Text.Trim())).ToString();
-            if (servicesCb.SelectedIndex != 0)
-            {
-                squareTb.IsEnabled = false;
-                squareTb.Text = "";
-            }
-            else squareTb.IsEnabled = true;
+            
         }
 
         private void squareTb_TextChanged(object sender, TextChangedEventArgs e)

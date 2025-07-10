@@ -110,7 +110,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Header="Цена" 
+                            <GridViewColumn Header="Цена за кв.м/кол-во окон" 
                                    Width="300">
                                 <GridViewColumn.HeaderContainerStyle>
                                     <Style  TargetType="GridViewColumnHeader">

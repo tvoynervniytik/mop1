@@ -32,10 +32,18 @@ namespace mop.Pages.editingPages
             ordr = order;
             clients = new List<Clients>(DBConnection.mop.Clients.ToList());
             brigades = new List<Brigades>(DBConnection.mop.Brigades.ToList());
+            brigades.Sort((b1, b2) => b1.ID.CompareTo(b2.ID));
             services = new List<Services>(DBConnection.mop.Services.ToList());
 
-            servicesCb.Text = order.Services.Name;
-            servicesCb.SelectedItem = order.ServiceID;
+            Services curService = services.FirstOrDefault(i=>i.ID == ordr.ServiceID);
+            servicesCb.SelectedItem = curService;
+
+            Clients curClient = clients.FirstOrDefault(i=>i.ID==ordr.ClientID);
+            clientsCb.SelectedItem = curClient;
+
+            Brigades curBrigade = brigades.FirstOrDefault(i=>i.ID==ordr.BrigadeID);
+            brigadesCb.SelectedItem = curBrigade;
+
             dateDp.SelectedDate = order.Date;
             priceTb.Text = (order.Price).ToString();
             this.DataContext = this;

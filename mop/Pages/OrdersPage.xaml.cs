@@ -35,20 +35,7 @@ namespace mop.Pages
         {
             orders = new List<Orders>(DBConnection.mop.Orders.ToList());
             
-            foreach (Orders o in orders)
-            {
-                if (o != null)
-                {
-                    if (o.ServiceID == 1)
-                        o.Price = o.Services.Price * o.CountPeople;
-                    else
-                    {
-                        o.Price = o.Services.Price;
-                        o.CountPeople = null;
-                    }
-                    DBConnection.mop.SaveChanges();
-                }
-            }
+           
             ordersLv.ItemsSource = new List<Orders>(DBConnection.mop.Orders.ToList());
         }
 

@@ -24,6 +24,7 @@ namespace mop.Pages
     public partial class RequestsPage : Page
     {
         public static List<Requests> requests { get; set; }
+       
         public partial class RequestsLv
         {
             public int ID { get; set; }
@@ -43,14 +44,29 @@ namespace mop.Pages
         public RequestsPage()
         {
             InitializeComponent();
+            Refresh();
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (AuthorizationFunc.loggedUser.PostID == 3 || AuthorizationFunc.loggedUser.PostID == 4) //meneger or admin
+                NavigationService.Navigate(new MenuSecondPage());
+            else
+                NavigationService.Navigate(new ProfilePage());
+        }
+        public void Refresh()
+        {
             var ItemsRequestlv = new List<RequestsLv>();
-            if (AuthorizationFunc.loggedUser.PostID == 3 || AuthorizationFunc.loggedUser.PostID == 4) //meneger employees
+            if (AuthorizationFunc.loggedUser.PostID == 3 || AuthorizationFunc.loggedUser.PostID == 4) //meneger or admin
                 requests = new List<Requests>(DBConnection.mop.Requests.ToList());
             else
             {
                 requests = new List<Requests>(DBConnection.mop.Requests.
                     Where(i => i.EmployeeID == AuthorizationFunc.loggedUser.ID).ToList());
                 mngSp.Visibility = Visibility.Hidden;
+                surSt.Visibility = Visibility.Hidden;
+                surSt.Width = 0;
+                surSt.Height = 0;
             }
             foreach (var request in requests)
             {
@@ -71,41 +87,30 @@ namespace mop.Pages
                 else requestsLv.Checking = "не проверено";
                 ItemsRequestlv.Add(requestsLv);
             }
-            requestsLv.ItemsSource =ItemsRequestlv.ToList();
-            this.DataContext = this;
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (AuthorizationFunc.loggedUser.PostID == 3 || AuthorizationFunc.loggedUser.PostID == 4) //meneger employees
-                NavigationService.Navigate(new MenuSecondPage());
-            else
-                NavigationService.Navigate(new ProfilePage());
-        }
-        public void Refresh()
-        {
-            var itemssource = new List<Requests>(DBConnection.mop.Requests.ToList());
-            var ItemsRequestlv = new List<RequestsLv>();
+            //requestsLv.ItemsSource = ItemsRequestlv.ToList();
+            //this.DataContext = this;
+            //var itemssource = new List<Requests>(DBConnection.mop.Requests.ToList());
+            
             //условие
             if (surnameTb.Text == "") { }
             else
-                itemssource = itemssource.Where(i => i.Employees.Surname.ToLower().StartsWith(surnameTb.Text.Trim().ToLower())).ToList();
+                requests = requests.Where(i => i.Employees.Surname.ToLower().StartsWith(surnameTb.Text.Trim().ToLower())).ToList();
             if (dateDp.SelectedDate == null) { }
             else //dateDp
-                itemssource = itemssource.Where(i => i.Date == (DateTime)dateDp.SelectedDate).ToList();
+                requests = requests.Where(i => i.Date == (DateTime)dateDp.SelectedDate).ToList();
             if (checkingCb.SelectedItem == null || checkingCb.SelectedIndex == 0) { }
             else //checkingCb
                 if (checkingCb.SelectedIndex == 1)
-                    itemssource = itemssource.Where(i => i.Checking == true).ToList();
+                    requests = requests.Where(i => i.Checking == true).ToList();
                 else
-                    itemssource = itemssource.Where(i => i.Checking == false).ToList();
+                    requests = requests.Where(i => i.Checking == false).ToList();
             if (doneCb.SelectedItem == null || doneCb.SelectedIndex == 0) { }
             else //doneCb
                 if (doneCb.SelectedIndex == 1)
-                    itemssource = itemssource.Where(i => i.Done == true).ToList();
+                    requests = requests.Where(i => i.Done == true).ToList();
                 else
-                    itemssource = itemssource.Where(i => i.Done == false).ToList();
-            foreach (var request in itemssource)
+                    requests = requests.Where(i => i.Done == false).ToList();
+            foreach (var request in requests)
             {
                 RequestsLv requestsLv = new RequestsLv();
                 requestsLv.ID = request.ID;
