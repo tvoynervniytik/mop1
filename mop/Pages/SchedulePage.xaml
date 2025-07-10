@@ -210,7 +210,7 @@
                                 </GridViewColumn.HeaderContainerStyle>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Date}" Foreground="#A3AEE6"/>
+                                        <TextBlock Text="{Binding DateCorrect}" Foreground="#A3AEE6"/>
 
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
